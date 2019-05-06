@@ -8,6 +8,7 @@ target 'todoApp' do
   pod 'RealmSwift'
   pod 'FSCalendar'
   pod 'CalculateCalendarLogic'
+  pod 'Eureka'
 
   # Pods for todoApp
 

@@ -1,5 +1,6 @@
 PODS:
   - CalculateCalendarLogic (0.2.5)
+  - Eureka (4.3.1)
   - FSCalendar (2.8.0)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
@@ -9,22 +10,25 @@ PODS:
 
 DEPENDENCIES:
   - CalculateCalendarLogic
+  - Eureka
   - FSCalendar
   - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CalculateCalendarLogic
+    - Eureka
     - FSCalendar
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
   CalculateCalendarLogic: 27db31b8f27a42869ecf7ad0d43963a05af14193
+  Eureka: 28ea296f06710f6745266b71f17862048941a32d
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
 
-PODFILE CHECKSUM: 2484e669a97a7e1ad187c4174f7f56d9308d47ff
+PODFILE CHECKSUM: f72f7dccbfb0cb007925553b827c6825a76e1282
 
 COCOAPODS: 1.5.3

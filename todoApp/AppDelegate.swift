@@ -17,13 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let storyboard = UIStoryboard(
+        let taskViewVC = UIStoryboard(
             name: "TaskView",
             bundle: nil)
-        let taskVC = storyboard.instantiateViewController(
-            withIdentifier: "initial") as! TaskViewViewController
-        let navigationController = UINavigationController(
-            rootViewController: taskVC)
+            .instantiateViewController(withIdentifier: "view") as! TaskViewViewController
+        let navigationController = UINavigationController(rootViewController: taskViewVC)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

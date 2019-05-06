@@ -47,21 +47,37 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 }
 
 extension CalendarViewController: CalendarPresenterOutput {
+//    func transitionToNextViewController(selectedDate: String) {
+//        let todoInputVC = UIStoryboard(
+//            name: "TodoInput",
+//            bundle: nil)
+//            .instantiateInitialViewController() as! TodoInputViewController
+//        let model = TodoInputModel(selectedDate: selectedDate)
+//        let presenter = TodoInputPresenter(
+//            selectedDate: selectedDate,
+//            view: todoInputVC,
+//            model: model)
+//        todoInputVC.inject(presenter: presenter)
+//
+//        self.present(todoInputVC, animated: true, completion: nil)
+//    }
+    
     func transitionToNextViewController(selectedDate: String) {
-        let todoInputVC = UIStoryboard(
-            name: "TodoInput",
+        let todoInputFVC = UIStoryboard(
+            name: "TaskView",
             bundle: nil)
-            .instantiateInitialViewController() as! TodoInputViewController
+            .instantiateViewController(
+            withIdentifier: "input") as! TodoInputFormViewController
         let model = TodoInputModel(selectedDate: selectedDate)
         let presenter = TodoInputPresenter(
             selectedDate: selectedDate,
-            view: todoInputVC,
+            view: todoInputFVC,
             model: model)
-        todoInputVC.inject(presenter: presenter)
-        
-        self.present(todoInputVC, animated: true, completion: nil)
+        todoInputFVC.inject(presenter: presenter)
+
+        self.navigationController?.pushViewController(todoInputFVC, animated: true)
     }
-    
+
 }
 
 
