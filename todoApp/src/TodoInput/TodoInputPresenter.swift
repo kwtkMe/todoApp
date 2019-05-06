@@ -7,3 +7,31 @@
 //
 
 import Foundation
+
+protocol TodoInputPresenterInput {
+    func didTapBottomButton()
+}
+
+protocol TodoInputPresenterOutput: AnyObject {
+    func transitionToNextViewController(selectedDate: String)
+}
+
+final class TodoInputPresenter: TodoInputPresenterInput {
+    private var selectedDate: String
+    
+    private weak var view: TodoInputPresenterOutput!
+    private var model: TodoInputModelInput
+    
+    init(selectedDate: String, view: TodoInputPresenterOutput, model: TodoInputModelInput) {
+        self.selectedDate = selectedDate
+        self.view = view
+        self.model = model
+    }
+    
+    func didTapBottomButton() {
+        // データソースと連携
+        
+        // 画面遷移
+        view.transitionToNextViewController(selectedDate: selectedDate)
+    }
+}

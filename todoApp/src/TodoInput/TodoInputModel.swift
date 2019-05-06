@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+protocol TodoInputModelInput {
+    
+}
+
+final class TodoInputModel: TodoInputModelInput {
+    private var selectedDate: String
+    
+    init(selectedDate: String) {
+        self.selectedDate = selectedDate
+    }
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GSk-e8-sP2">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Todo Input View Controller-->
+        <scene sceneID="jLm-Hw-3Em">
+            <objects>
+                <viewController id="GSk-e8-sP2" customClass="TodoInputViewController" customModule="todoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OIk-Ry-pgn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFl-5e-6Lj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="タスクを追加" id="Moz-bp-3mn">
+                                        <barButtonItem key="leftBarButtonItem" title="close" image="delete" id="H4k-aW-Fsj">
+                                            <connections>
+                                                <action selector="tapCloseButton:" destination="GSk-e8-sP2" id="zv5-XL-9R7"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タスク名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-Jv-AdW">
+                                <rect key="frame" x="16" y="144" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USP-A4-zUg" customClass="BottomButtonView" customModule="todoApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="600.5" width="375" height="66.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D1n-YB-hMT">
+                                <rect key="frame" x="0.0" y="173" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="日時を追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abi-Lj-GcL">
+                                <rect key="frame" x="16" y="234" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2Q-DwP">
+                                <rect key="frame" x="0.0" y="263" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.88" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qFl-5e-6Lj" firstAttribute="trailing" secondItem="csd-42-w1g" secondAttribute="trailing" id="2Jm-uU-Rz5"/>
+                            <constraint firstItem="D1n-YB-hMT" firstAttribute="trailing" secondItem="csd-42-w1g" secondAttribute="trailing" id="3Vq-lv-PQF"/>
+                            <constraint firstItem="nmB-Jv-AdW" firstAttribute="leading" secondItem="csd-42-w1g" secondAttribute="leading" constant="16" id="Dez-Iy-a3i"/>
+                            <constraint firstItem="D1n-YB-hMT" firstAttribute="top" secondItem="nmB-Jv-AdW" secondAttribute="bottom" constant="8" id="H9H-G1-a7R"/>
+                            <constraint firstItem="USP-A4-zUg" firstAttribute="height" secondItem="OIk-Ry-pgn" secondAttribute="height" multiplier="0.1" id="IWf-rJ-PRy"/>
+                            <constraint firstItem="D1n-YB-hMT" firstAttribute="leading" secondItem="csd-42-w1g" secondAttribute="leading" id="WpA-Nf-1mc"/>
+                            <constraint firstItem="USP-A4-zUg" firstAttribute="trailing" secondItem="csd-42-w1g" secondAttribute="trailing" id="XhN-dW-vPv"/>
+                            <constraint firstItem="qFl-5e-6Lj" firstAttribute="top" secondItem="csd-42-w1g" secondAttribute="top" id="a3n-8w-EYs"/>
+                            <constraint firstItem="Ua3-2Q-DwP" firstAttribute="top" secondItem="Abi-Lj-GcL" secondAttribute="bottom" constant="8" id="dwT-as-Dke"/>
+                            <constraint firstItem="nmB-Jv-AdW" firstAttribute="top" secondItem="qFl-5e-6Lj" secondAttribute="bottom" constant="80" id="gLV-0U-Zlg"/>
+                            <constraint firstItem="qFl-5e-6Lj" firstAttribute="leading" secondItem="csd-42-w1g" secondAttribute="leading" id="pXT-4V-Hov"/>
+                            <constraint firstItem="USP-A4-zUg" firstAttribute="leading" secondItem="csd-42-w1g" secondAttribute="leading" id="vAv-xU-mME"/>
+                            <constraint firstItem="USP-A4-zUg" firstAttribute="bottom" secondItem="csd-42-w1g" secondAttribute="bottom" id="vjA-uO-V5H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="csd-42-w1g"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomButtonView" destination="USP-A4-zUg" id="aJp-Gv-cuZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1wV-ZU-KG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="573.60000000000002" y="-359.37031484257875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="delete" width="37.5" height="37.5"/>
+    </resources>
+</document>
