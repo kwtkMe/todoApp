@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ListPresenterInput {
-    func didTapBottomButton()
+    func willPerformPrevious()
 }
 
 protocol ListPresenterOutput: AnyObject {
@@ -29,7 +29,7 @@ final class ListPresenter: ListPresenterInput {
     
     // 画面下部のボタンをタップ
     // 画面遷移
-    func didTapBottomButton() {
+    func willPerformPrevious() {
         // 日時の確認をしたい(希望)
         
         // 画面遷移

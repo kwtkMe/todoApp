@@ -10,43 +10,34 @@ import UIKit
 import Eureka
 
 class TodoInputFormViewController: FormViewController {
-    
-    @IBOutlet weak var bottomButtonView: BottomButtonView!
-    
     private var presenter: TodoInputPresenterInput!
+    
     func inject(presenter: TodoInputPresenterInput) {
         self.presenter = presenter
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavBar()
-        setupEurekaFormView()
+        setupFormView()
         setupViews()
-    }
-    
-    @objc func backPressed() {
-        navigationController?.popViewController(animated: true)
     }
     
     private func setupNavBar() {
         navigationController?.navigationBar.isHidden = false
-        title = "タスクを入力"
-        let backButton = UIBarButtonItem(barButtonSystemItem: .cancel,
+        let title = "タスクを入力"
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
                                          target: self,
-                                         action: #selector(backPressed))
-        navigationItem.leftBarButtonItem = backButton
-        
-        let button = UIBarButtonItem(barButtonSystemItem: .save,
-                                     target: self,
-                                     action: #selector(didTapSaveButton(sender:)))
-        
-        navigationItem.rightBarButtonItem = button
+                                         action: #selector(didTapCancelButton(sender:)))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save,
+                                         target: self,
+                                         action: #selector(didTapSaveButton(sender:)))
         navigationItem.title = title
+        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.rightBarButtonItem = saveButton
     }
     
-    private func setupEurekaFormView() {
+    private func setupFormView() {
         form
             +++ Section()
             <<< NameRow("NameRowTag") {
@@ -93,12 +84,10 @@ class TodoInputFormViewController: FormViewController {
                 $0.options = ["Japan", "Other"]
         }
         
-        // If you don't want to use Eureka custom operators ...
-        //        let row = NameRow("NameRow") { $0.title = "name" }
-        //        let section = Section()
-        //        section.append(row)
-        //        form.append(section)
-        //
+    }
+    
+    @objc func didTapCancelButton(sender: UIBarButtonItem) {
+        presenter.willPerformPrevious()
     }
     
     @objc func didTapSaveButton(sender: UIBarButtonItem) {
@@ -138,23 +127,15 @@ class TodoInputFormViewController: FormViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    // 追加でビューを整えるメソッド
     private func setupViews() {
-//        bottomButtonView.button.setTitle("完了する", for: .normal)
-//        bottomButtonView.button.addTarget(self, action: #selector(tapButton(_:)), for: UIControl.Event.touchUpInside)
-    }
-    
-    @objc func tapButton(_ sender: UIButton) {
-        presenter.didTapBottomButton()
-    }
-    
-    @IBAction func tapCloseButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        
     }
 }
 
 extension TodoInputFormViewController: TodoInputPresenterOutput {
     func transitionToNextViewController(selectedDate: String) {
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
 }

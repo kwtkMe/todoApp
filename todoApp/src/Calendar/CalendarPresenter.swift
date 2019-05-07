@@ -14,7 +14,7 @@ protocol CalendarPresenterInput {
     func didSelectDate(at date: Date)
     func didTapRadioButton()
     func didDeleteTask()
-    func didTapBottomButton()
+    func willPerformPrevious()
 }
 
 protocol CalendarPresenterOutput: AnyObject {
@@ -51,7 +51,7 @@ final class CalendarPresenter: CalendarPresenterInput {
     
     // 画面下部のボタンをタップ
     // 画面遷移
-    func didTapBottomButton() {
+    func willPerformPrevious() {
         // 日時の確認をしたい(希望)
         
         // 画面遷移

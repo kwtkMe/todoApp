@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TodoInputPresenterInput {
-    func didTapBottomButton()
+    func willPerformPrevious()
 }
 
 protocol TodoInputPresenterOutput: AnyObject {
@@ -28,7 +28,7 @@ final class TodoInputPresenter: TodoInputPresenterInput {
         self.model = model
     }
     
-    func didTapBottomButton() {
+    func willPerformPrevious() {
         // データソースと連携
         
         // 画面遷移

@@ -23,7 +23,6 @@ class TaskViewViewController: UIViewController {
         add(asChildViewController: calendarVC)
         return calendarVC
     }()
-    
     private lazy var listViewController: ListViewController = {
         let listVC = UIStoryboard(
             name: "List",

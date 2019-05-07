@@ -138,12 +138,21 @@
 			path = TaskView;
 			sourceTree = "<group>";
 		};
-		46E7A43C2274767700082EBF /* util */ = {
+		469A69FD228100E4002A82ED /* BottomButtonView */ = {
 			isa = PBXGroup;
 			children = (
 				469A69F7227FB599002A82ED /* BottomButtonView.xib */,
 				469A69F5227FB587002A82ED /* BottomButtonView.swift */,
 				469A69F9227FC956002A82ED /* BottomButtonViewPresenter.swift */,
+			);
+			path = BottomButtonView;
+			sourceTree = "<group>";
+		};
+		46E7A43C2274767700082EBF /* util */ = {
+			isa = PBXGroup;
+			children = (
+				469A69FD228100E4002A82ED /* BottomButtonView */,
+				469A69EC227FAE5C002A82ED /* TaskView */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -161,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				46E7A43C2274767700082EBF /* util */,
-				469A69EC227FAE5C002A82ED /* TaskView */,
 				468290F72274701D00807757 /* Calendar */,
 				468290F62274701700807757 /* List */,
 				468290F52274701200807757 /* TodoInput */,
