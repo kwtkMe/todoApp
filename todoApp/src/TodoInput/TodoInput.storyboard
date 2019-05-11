@@ -18,6 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9a-rk-oXf">
+                                <rect key="frame" x="0.0" y="88" width="414" height="717"/>
+                                <connections>
+                                    <segue destination="z3a-TJ-HRF" kind="embed" id="XBp-ki-E9x"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XY8-92-qWa" customClass="BottomButtonView" customModule="todoApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="772.5" width="414" height="89.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZ5-P1-0y8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
@@ -26,35 +36,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B9a-rk-oXf">
-                                <rect key="frame" x="0.0" y="88" width="414" height="806.5"/>
-                                <connections>
-                                    <segue destination="z3a-TJ-HRF" kind="embed" id="XBp-ki-E9x"/>
-                                </connections>
-                            </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XY8-92-qWa" customClass="BottomButtonView" customModule="todoApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="772.5" width="414" height="89.5"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGP-Jx-IuX" customClass="BottomButtonView" customModule="todoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="hGP-Jx-IuX" firstAttribute="leading" secondItem="XY8-92-qWa" secondAttribute="leading" id="TcI-if-7TL"/>
-                                    <constraint firstAttribute="bottom" secondItem="hGP-Jx-IuX" secondAttribute="bottom" id="l5x-cH-AjZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="hGP-Jx-IuX" secondAttribute="trailing" id="t1q-jI-h3D"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WZ5-P1-0y8" firstAttribute="top" secondItem="32h-ET-ySi" secondAttribute="top" id="9OA-k0-K6u"/>
                             <constraint firstItem="XY8-92-qWa" firstAttribute="leading" secondItem="32h-ET-ySi" secondAttribute="leading" id="AMg-Qf-tN7"/>
-                            <constraint firstItem="hGP-Jx-IuX" firstAttribute="height" secondItem="k8c-7Q-9eN" secondAttribute="height" multiplier="0.1" id="HXu-4e-R30"/>
                             <constraint firstItem="B9a-rk-oXf" firstAttribute="top" secondItem="WZ5-P1-0y8" secondAttribute="bottom" id="NaV-nr-RIC"/>
-                            <constraint firstItem="B9a-rk-oXf" firstAttribute="height" secondItem="k8c-7Q-9eN" secondAttribute="height" multiplier="0.9" id="NfY-G9-lbx"/>
+                            <constraint firstItem="B9a-rk-oXf" firstAttribute="height" secondItem="k8c-7Q-9eN" secondAttribute="height" multiplier="0.8" id="NfY-G9-lbx"/>
                             <constraint firstItem="B9a-rk-oXf" firstAttribute="trailing" secondItem="32h-ET-ySi" secondAttribute="trailing" id="PHU-in-Fas"/>
                             <constraint firstItem="XY8-92-qWa" firstAttribute="bottom" secondItem="32h-ET-ySi" secondAttribute="bottom" id="RPo-zp-XOD"/>
                             <constraint firstItem="WZ5-P1-0y8" firstAttribute="leading" secondItem="32h-ET-ySi" secondAttribute="leading" id="ax4-jv-lVx"/>
@@ -69,7 +57,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="delete" id="WMt-4s-uKh"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomButtonView" destination="hGP-Jx-IuX" id="3Ba-yk-w6M"/>
+                        <outlet property="bottomButtonView" destination="XY8-92-qWa" id="eHC-Vf-sVk"/>
                         <outlet property="cancelBarButton" destination="xOh-bQ-cdU" id="8xE-Or-240"/>
                         <outlet property="container" destination="B9a-rk-oXf" id="4Xg-WJ-NBE"/>
                     </connections>
@@ -83,9 +71,10 @@
             <objects>
                 <viewController id="z3a-TJ-HRF" customClass="TodoInputFormViewController" customModule="todoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UNM-Sf-S2J">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="806.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="k4O-4D-DXs"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LrJ-Qm-40z" userLabel="First Responder" sceneMemberID="firstResponder"/>

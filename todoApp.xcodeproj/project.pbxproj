@@ -76,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		466DD57D2286CC2E00A8C102 /* TodoInputForm */ = {
+			isa = PBXGroup;
+			children = (
+				469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */,
+			);
+			path = TodoInputForm;
+			sourceTree = "<group>";
+		};
 		468290D72274461A00807757 = {
 			isa = PBXGroup;
 			children = (
@@ -108,11 +116,11 @@
 		468290F52274701200807757 /* TodoInput */ = {
 			isa = PBXGroup;
 			children = (
-				469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */,
 				4600F2CE228562AB0030A5E5 /* TodoInput.storyboard */,
 				4600F2D0228562CF0030A5E5 /* TodoInputViewController.swift */,
 				46829108227471AF00807757 /* TodoInputPresenter.swift */,
 				4682910A227471BD00807757 /* TodoInputModel.swift */,
+				466DD57D2286CC2E00A8C102 /* TodoInputForm */,
 			);
 			path = TodoInput;
 			sourceTree = "<group>";

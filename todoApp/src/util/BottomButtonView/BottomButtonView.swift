@@ -30,6 +30,7 @@ final class BottomButtonView: UIView {
         if let view = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {
             view.frame = self.bounds
             self.addSubview(view)
+            print("button loaded")
         }
     }
 }

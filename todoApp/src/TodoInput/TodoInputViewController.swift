@@ -39,36 +39,28 @@ final class TodoInputViewController: UIViewController {
         setupViews()
     }
     
+    deinit {
+        print("deinit input")
+    }
+    
     private func setupViews() {
         cancelBarButton.action = #selector(tapCloseButton(_:))
-        //cancelBarButton.addTarget(self, action: #selector(tapBottomButton(_:)), for: UIControl.Event.touchUpInside)
-        
         bottomButtonView.button.setTitle("完了する", for: .normal)
         bottomButtonView.button.addTarget(self, action: #selector(tapBottomButton(_:)), for: UIControl.Event.touchUpInside)
     }
     
     @objc func tapCloseButton(_ sender: UIButton) {
-        transitionToNextViewController()
-        print("closed!!!")
+        self.transitionToNextViewController()
     }
     
     @objc func tapBottomButton(_ sender: UIButton) {
         presenter.willPerformPrevious()
-        print("pbjc test")
     }
 
 }
 
 extension TodoInputViewController: TodoInputPresenterOutput {
     func transitionToNextViewController() {
-//        navigationController?.popViewController(animated: true)
-        let taskViewVC = UIStoryboard(
-            name: "TaskView",
-            bundle: nil)
-            .instantiateViewController(withIdentifier: "view") as! TaskViewViewController
-        let navigationController = UINavigationController(rootViewController: taskViewVC)
-        
         self.dismiss(animated: true)
     }
-    
 }

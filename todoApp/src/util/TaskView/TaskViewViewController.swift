@@ -12,28 +12,28 @@ class TaskViewViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     private lazy var calendarViewController: CalendarViewController = {
-        let calendarVC = UIStoryboard(
+        let view = UIStoryboard(
             name: "Calendar",
             bundle: Bundle.main)
             .instantiateInitialViewController() as! CalendarViewController
         let model = CalendarModel()
-        let presenter = CalendarPresenter(view: calendarVC, model: model)
-        calendarVC.inject(presenter: presenter)
+        let presenter = CalendarPresenter(view: view, model: model)
+        view.inject(presenter: presenter)
         
-        add(asChildViewController: calendarVC)
-        return calendarVC
+        add(asChildViewController: view)
+        return view
     }()
     private lazy var listViewController: ListViewController = {
-        let listVC = UIStoryboard(
+        let view = UIStoryboard(
             name: "List",
             bundle: Bundle.main)
             .instantiateInitialViewController() as! ListViewController
         let model = ListModel()
-        let presenter = ListPresenter(view: listVC, model: model)
-        listVC.inject(presenter: presenter)
+        let presenter = ListPresenter(view: view, model: model)
+        view.inject(presenter: presenter)
         
-        add(asChildViewController: listVC)
-        return listVC
+        add(asChildViewController: view)
+        return view
     }()
     
     override func viewDidLoad() {

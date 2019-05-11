@@ -36,13 +36,16 @@ final class ListViewController: UIViewController {
 
 extension ListViewController: ListPresenterOutput {
     func transitionToNextViewController(selectedDate: String) {
-        let uiExampleVC = UIStoryboard(
+        let view = UIStoryboard(
             name: "TodoInput",
             bundle: nil)
             .instantiateViewController(
                 withIdentifier: "initial") as! TodoInputViewController
+        let model = TodoInputModel()
+        let presenter = TodoInputPresenter(view: view, model: model)
+        view.inject(presenter: presenter)
         
-        present(uiExampleVC, animated: true, completion: nil)
+        present(view, animated: true, completion: nil)
     }
     
 }

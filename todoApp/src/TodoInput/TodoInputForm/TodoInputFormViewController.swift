@@ -16,6 +16,10 @@ class TodoInputFormViewController: FormViewController {
         setupFormView()
     }
     
+    deinit {
+        print("deinit form")
+    }
+    
     private func setupFormView() {
         form
             +++ Section("タスク名")

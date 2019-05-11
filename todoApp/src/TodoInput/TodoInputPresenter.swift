@@ -17,20 +17,18 @@ protocol TodoInputPresenterOutput: AnyObject {
 }
 
 final class TodoInputPresenter: TodoInputPresenterInput {
-    private var selectedDate: String
-    
     private weak var view: TodoInputPresenterOutput!
     private var model: TodoInputModelInput
     
-    init(selectedDate: String, view: TodoInputPresenterOutput, model: TodoInputModelInput) {
-        self.selectedDate = selectedDate
+    init(view: TodoInputPresenterOutput, model: TodoInputModelInput) {
         self.view = view
         self.model = model
+        
+        print("model oh_yeah")
     }
     
     func willPerformPrevious() {
         // データソースと連携
-        print("presenter test")
 
         // 画面遷移
         view.transitionToNextViewController()
