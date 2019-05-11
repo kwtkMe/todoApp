@@ -13,7 +13,7 @@ protocol TodoInputPresenterInput {
 }
 
 protocol TodoInputPresenterOutput: AnyObject {
-    func transitionToNextViewController(selectedDate: String)
+    func transitionToNextViewController()
 }
 
 final class TodoInputPresenter: TodoInputPresenterInput {
@@ -30,8 +30,9 @@ final class TodoInputPresenter: TodoInputPresenterInput {
     
     func willPerformPrevious() {
         // データソースと連携
-        
+        print("presenter test")
+
         // 画面遷移
-        view.transitionToNextViewController(selectedDate: selectedDate)
+        view.transitionToNextViewController()
     }
 }

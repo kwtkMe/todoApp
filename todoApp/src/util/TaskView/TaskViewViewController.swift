@@ -38,7 +38,6 @@ class TaskViewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
     }
     

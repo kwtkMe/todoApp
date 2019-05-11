@@ -36,19 +36,13 @@ final class ListViewController: UIViewController {
 
 extension ListViewController: ListPresenterOutput {
     func transitionToNextViewController(selectedDate: String) {
-        let todoInputFVC = UIStoryboard(
-            name: "TaskView",
+        let uiExampleVC = UIStoryboard(
+            name: "TodoInput",
             bundle: nil)
             .instantiateViewController(
-                withIdentifier: "input") as! TodoInputFormViewController
-        let model = TodoInputModel(selectedDate: selectedDate)
-        let presenter = TodoInputPresenter(
-            selectedDate: selectedDate,
-            view: todoInputFVC,
-            model: model)
-        todoInputFVC.inject(presenter: presenter)
+                withIdentifier: "initial") as! TodoInputViewController
         
-        self.navigationController?.pushViewController(todoInputFVC, animated: true)
+        present(uiExampleVC, animated: true, completion: nil)
     }
     
 }
