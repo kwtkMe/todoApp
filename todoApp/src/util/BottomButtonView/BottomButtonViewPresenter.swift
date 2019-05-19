@@ -21,8 +21,4 @@ final class BottomButtonViewPresenter {
         self.view = view
     }
     
-    deinit {
-        print("deinit button")
-    }
-    
 }

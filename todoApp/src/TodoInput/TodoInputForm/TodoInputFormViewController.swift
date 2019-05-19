@@ -16,19 +16,13 @@ class TodoInputFormViewController: FormViewController {
         setupFormView()
     }
     
-    deinit {
-        print("deinit form")
-    }
-    
     private func setupFormView() {
         form
             +++ Section("タスク名")
-            <<< NameRow("NameRowTag") {
+            <<< NameRow("taskName") {
                 $0.title = "タスク名"
                 $0.add(rule: RuleRequired())
                 $0.validationOptions = .validatesOnBlur
-                }.onChange {
-                    print("Name changed:", $0.value ?? "");
                 }.cellUpdate { cell, row in
                     if !row.isValid {
                         cell.titleLabel?.textColor = .red
@@ -36,18 +30,17 @@ class TodoInputFormViewController: FormViewController {
             }
             
             +++ Section("時間設定")
-            <<< SwitchRow("switchRowTag"){
+            <<< SwitchRow("taskTimeSwitch") {
                 $0.title = "時間を設定"
             }
-            <<< DateRow("BirthdayRowTag") {
-                $0.hidden = Condition.function(["switchRowTag"]) { form in
-                    return !((form.rowBy(tag: "switchRowTag") as? SwitchRow)?.value ?? false)
+            <<< TimeRow("taskTime") {
+                $0.hidden = Condition.function(["taskTimeSwitch"]) { form in
+                    return !((form.rowBy(tag: "taskTimeSwitch") as? SwitchRow)?.value ?? false)
                 }
-                
-
                 $0.value = Calendar(identifier: .gregorian).date(byAdding: .year, value: -20, to: Date())
-            }
-        
+        }
+
     }
+
     
 }

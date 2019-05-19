@@ -59,7 +59,7 @@
                     <connections>
                         <outlet property="bottomButtonView" destination="XY8-92-qWa" id="eHC-Vf-sVk"/>
                         <outlet property="cancelBarButton" destination="xOh-bQ-cdU" id="8xE-Or-240"/>
-                        <outlet property="container" destination="B9a-rk-oXf" id="4Xg-WJ-NBE"/>
+                        <outlet property="container" destination="B9a-rk-oXf" id="AuR-uj-xuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNI-ig-nq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LrJ-Qm-40z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3784" y="-611"/>
+            <point key="canvasLocation" x="3671" y="-611"/>
         </scene>
     </scenes>
     <resources>

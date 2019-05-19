@@ -9,30 +9,19 @@
 import Foundation
 
 protocol ListPresenterInput {
-    func willPerformPrevious()
+
 }
 
 protocol ListPresenterOutput: AnyObject {
-    func transitionToNextViewController(selectedDate: String)
+
 }
 
-final class ListPresenter: ListPresenterInput {    
-    private(set) var selectedDate: String = "date"
-    
+final class ListPresenter: ListPresenterInput {        
     private weak var view: ListPresenterOutput!
     private var model: ListModelInput
     
     init(view: ListPresenterOutput, model: ListModelInput) {
         self.view = view
         self.model = model
-    }
-    
-    // 画面下部のボタンをタップ
-    // 画面遷移
-    func willPerformPrevious() {
-        // 日時の確認をしたい(希望)
-        
-        // 画面遷移
-        view.transitionToNextViewController(selectedDate: selectedDate)
     }
 }

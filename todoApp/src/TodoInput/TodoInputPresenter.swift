@@ -9,7 +9,8 @@
 import Foundation
 
 protocol TodoInputPresenterInput {
-    func willPerformPrevious()
+    func registerTask()
+    func willTransitionToNextViewController()
 }
 
 protocol TodoInputPresenterOutput: AnyObject {
@@ -17,17 +18,22 @@ protocol TodoInputPresenterOutput: AnyObject {
 }
 
 final class TodoInputPresenter: TodoInputPresenterInput {
+    private var dateSelected: String!
+    
     private weak var view: TodoInputPresenterOutput!
     private var model: TodoInputModelInput
     
-    init(view: TodoInputPresenterOutput, model: TodoInputModelInput) {
+    init(dateSelected: String, view: TodoInputPresenterOutput, model: TodoInputModelInput) {
+        self.dateSelected = dateSelected
         self.view = view
         self.model = model
-        
-        print("model oh_yeah")
     }
     
-    func willPerformPrevious() {
+    func registerTask() {
+        
+    }
+    
+    func willTransitionToNextViewController() {
         // データソースと連携
 
         // 画面遷移

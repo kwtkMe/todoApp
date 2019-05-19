@@ -10,7 +10,6 @@ import UIKit
 
 final class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var bottomButtonView: BottomButtonView!
     
     private var presenter: ListPresenterInput!
     
@@ -24,28 +23,11 @@ final class ListViewController: UIViewController {
     }
     
     private func setupViews() {
-        bottomButtonView.button.setTitle("タスクを追加", for: .normal)
-        bottomButtonView.button.addTarget(self, action: #selector(tapBottomButton(_:)), for: UIControl.Event.touchUpInside)
-    }
-    
-    @objc func tapBottomButton(_ sender: UIButton) {
-        presenter.willPerformPrevious()
+        
     }
 
 }
 
 extension ListViewController: ListPresenterOutput {
-    func transitionToNextViewController(selectedDate: String) {
-        let view = UIStoryboard(
-            name: "TodoInput",
-            bundle: nil)
-            .instantiateViewController(
-                withIdentifier: "initial") as! TodoInputViewController
-        let model = TodoInputModel()
-        let presenter = TodoInputPresenter(view: view, model: model)
-        view.inject(presenter: presenter)
-        
-        present(view, animated: true, completion: nil)
-    }
     
 }

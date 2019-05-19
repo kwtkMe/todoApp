@@ -11,10 +11,11 @@ import UIKit
 import FSCalendar
 
 protocol CalendarPresenterInput {
-    func didSelectDate(at date: Date)
+    var dateSelected: String { get }
+    func didSelectDate(didSelect date: Date)
     func didTapRadioButton()
     func didDeleteTask()
-    func willPerformPrevious()
+    func willTransitionToNextViewController()
 }
 
 protocol CalendarPresenterOutput: AnyObject {
@@ -22,7 +23,7 @@ protocol CalendarPresenterOutput: AnyObject {
 }
 
 final class CalendarPresenter: CalendarPresenterInput {
-    private(set) var selectedDate: String = "date"
+    private(set) var selectedDate: Date!
     
     private weak var view: CalendarPresenterOutput!
     private var model: CalendarModelInput
@@ -32,11 +33,16 @@ final class CalendarPresenter: CalendarPresenterInput {
         self.model = model
     }
     
+    var dateSelected: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "jp_JP") as Locale
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: selectedDate)
+    }
+    
     // 保持する日付を切り替える
-    // カレンダービューの選択状況を更新
-    // タスクビューを更新
-    func didSelectDate(at date: Date) {
-        
+    func didSelectDate(didSelect date: Date) {
+        selectedDate = date
     }
     
     // タスクのラジオボタンを更新
@@ -49,13 +55,9 @@ final class CalendarPresenter: CalendarPresenterInput {
         // データソースにアクセス
     }
     
-    // 画面下部のボタンをタップ
     // 画面遷移
-    func willPerformPrevious() {
-        // 日時の確認をしたい(希望)
-        
-        // 画面遷移
-        view.transitionToNextViewController(selectedDate: selectedDate)
+    func willTransitionToNextViewController() {
+        view.transitionToNextViewController(selectedDate: dateSelected)
     }
     
 }

@@ -28,21 +28,29 @@ final class CalendarViewController: UIViewController {
     private func setupViews() {
         bottomButtonView.button.setTitle("タスクを追加", for: .normal)
         bottomButtonView.button.addTarget(self, action: #selector(tapBottomButton(_:)), for: UIControl.Event.touchUpInside)
+        
+        // カレンダーのセットアップ
+        // 初期値を当日のものとして保持
+        let today: Date = NSDate() as Date
+        calendar.select(today, scrollToDate: true)
+        presenter.didSelectDate(didSelect: calendar.selectedDate!)
     }
     
     @objc func tapBottomButton(_ sender: UIButton) {
-        presenter.willPerformPrevious()
+        presenter.willTransitionToNextViewController()
     }
 
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
-//    // カレンダーがタッチされた時の処理
-//    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        calendar.deselect(date)
-//        presenter.didSelectDate(at: date)
-//    }
+    // カレンダーがタッチされた時の処理
+    // カレンダービューの選択状況を更新((presenter.dateSelectedを反映
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        calendar.deselect(date)
+        calendar.select(date, scrollToDate: true)
+        presenter.didSelectDate(didSelect: date)
+    }
     
 }
 
@@ -54,7 +62,9 @@ extension CalendarViewController: CalendarPresenterOutput {
             .instantiateViewController(
                 withIdentifier: "initial") as! TodoInputViewController
         let model = TodoInputModel()
-        let presenter = TodoInputPresenter(view: view, model: model)
+        let presenter = TodoInputPresenter(dateSelected: self.presenter.dateSelected,
+                                           view: view,
+                                           model: model)
         view.inject(presenter: presenter)
 
         present(view, animated: true, completion: nil)

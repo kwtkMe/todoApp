@@ -7,26 +7,23 @@
 //
 
 import UIKit
-
-/*-----------------------------
-
- # 責務について
- 
- ## プロパティ
- - closeBarButton
- - bottomButtonView
- 
- - todoInputFormViewController
-    - これはselfが参照された時点で生成されそう
-
-
-
- -----------------------------*/
+import Eureka
 
 final class TodoInputViewController: UIViewController {
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var bottomButtonView: BottomButtonView!
     @IBOutlet weak var container: UIView!
+    private lazy var formViewController: TodoInputFormViewController = {
+        let viewController = TodoInputFormViewController()
+        addChild(viewController)
+        container.addSubview(viewController.view)
+        viewController.view.frame = view.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        viewController.didMove(toParent: self)
+        return viewController
+    }()
+    private var taskNameRow: NameRow!
+    private var taskTimeRow: TimeRow!
     
     private var presenter: TodoInputPresenterInput!
     
@@ -39,14 +36,14 @@ final class TodoInputViewController: UIViewController {
         setupViews()
     }
     
-    deinit {
-        print("deinit input")
-    }
-    
     private func setupViews() {
         cancelBarButton.action = #selector(tapCloseButton(_:))
         bottomButtonView.button.setTitle("完了する", for: .normal)
         bottomButtonView.button.addTarget(self, action: #selector(tapBottomButton(_:)), for: UIControl.Event.touchUpInside)
+
+        // formViewControllerの設定
+        taskNameRow = formViewController.form.rowBy(tag: "taskName")
+        taskTimeRow = formViewController.form.rowBy(tag: "taskTime")
     }
     
     @objc func tapCloseButton(_ sender: UIButton) {
@@ -54,7 +51,26 @@ final class TodoInputViewController: UIViewController {
     }
     
     @objc func tapBottomButton(_ sender: UIButton) {
-        presenter.willPerformPrevious()
+        let errors = formViewController.form.validate()
+        guard errors.isEmpty else {
+            print("validate errors:", errors)
+            return
+        }
+        
+        let taskName = taskNameRow.value!
+        // 時間指定について判断
+        guard let taskTime = taskTimeRow.value else {
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "jp_JP") as Locale
+        dateFormatter.dateFormat = "HH:mm:ss"
+
+        print("taskName is \(taskName)")
+        print("taskTime is \(dateFormatter.string(from: taskTime as Date))")
+        
+        presenter.willTransitionToNextViewController()
     }
 
 }
