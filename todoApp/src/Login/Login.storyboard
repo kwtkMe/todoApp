@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="B48-g7-K6V">
+            <objects>
+                <viewController id="A58-5p-cVc" customClass="LoginViewController" customModule="todoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RUh-Au-K0N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8g-eY-yFe">
+                                <rect key="frame" x="60" y="399" width="294" height="32"/>
+                                <color key="backgroundColor" red="0.1173277274" green="0.29685682060000002" blue="0.48239141699999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Twitter でログイン">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEy-OW-GqU">
+                                <rect key="frame" x="60" y="347" width="294" height="32"/>
+                                <color key="backgroundColor" red="0.39940425750000003" green="0.1001945809" blue="0.16860273479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Google でログイン">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="todoApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyl-Tj-w0Z">
+                                <rect key="frame" x="126" y="144" width="162" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="44"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x8g-eY-yFe" firstAttribute="top" secondItem="mEy-OW-GqU" secondAttribute="bottom" constant="20" id="25l-YI-3y5"/>
+                            <constraint firstItem="x8g-eY-yFe" firstAttribute="centerX" secondItem="RUh-Au-K0N" secondAttribute="centerX" id="2pG-hx-MWI"/>
+                            <constraint firstItem="mEy-OW-GqU" firstAttribute="centerX" secondItem="RUh-Au-K0N" secondAttribute="centerX" id="Kcy-nM-waC"/>
+                            <constraint firstItem="mEy-OW-GqU" firstAttribute="leading" secondItem="nSf-6S-pvq" secondAttribute="leading" constant="60" id="LM4-pc-aEU"/>
+                            <constraint firstItem="pyl-Tj-w0Z" firstAttribute="top" secondItem="nSf-6S-pvq" secondAttribute="top" constant="100" id="QzA-Xo-wFl"/>
+                            <constraint firstItem="mEy-OW-GqU" firstAttribute="top" secondItem="pyl-Tj-w0Z" secondAttribute="bottom" constant="150" id="V9h-YE-UKp"/>
+                            <constraint firstItem="mEy-OW-GqU" firstAttribute="leading" secondItem="x8g-eY-yFe" secondAttribute="leading" id="a3e-fw-QXk"/>
+                            <constraint firstItem="nSf-6S-pvq" firstAttribute="trailing" secondItem="pyl-Tj-w0Z" secondAttribute="trailing" constant="126" id="eId-ct-rhP"/>
+                            <constraint firstItem="pyl-Tj-w0Z" firstAttribute="leading" secondItem="nSf-6S-pvq" secondAttribute="leading" constant="126" id="xJe-Ec-HLb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nSf-6S-pvq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SrZ-64-c6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="231.8840579710145" y="23.4375"/>
+        </scene>
+    </scenes>
+</document>

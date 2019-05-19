@@ -9,6 +9,8 @@ target 'todoApp' do
   pod 'FSCalendar'
   pod 'CalculateCalendarLogic'
   pod 'Eureka'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
   # Pods for todoApp
 

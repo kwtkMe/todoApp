@@ -9,6 +9,7 @@
 import UIKit
 
 class TaskViewViewController: UIViewController {
+    @IBOutlet weak var userButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     private lazy var calendarViewController: CalendarViewController = {
@@ -49,6 +50,10 @@ class TaskViewViewController: UIViewController {
             remove(asChildViewController: calendarViewController)
             add(asChildViewController: listViewController)
         }
+    }
+    
+    @IBAction func tapUserButton(_ sender: UIBarButtonItem) {
+        
     }
     
     @IBAction func tapSegmentedControl(_ sender: UISegmentedControl) {
