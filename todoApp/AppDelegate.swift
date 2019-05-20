@@ -60,31 +60,18 @@ extension AppDelegate {
                                            consumerSecret: API_SECRET_KEY)
     }
     
-    // facebook&Google&電話番号認証時に呼ばれる関数
+    // facebook or Google
     func application(_ app: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
-        // GoogleもしくはFacebook認証の場合、trueを返す
+        // Google or Facebook認証、trueを返す
         if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
             return true
         }
-        // 電話番号認証の場合、trueを返す
-        if Auth.auth().canHandle(url) {
-            return true
-        }
+        
         return false
     }
     
-    // 電話番号認証の場合に通知をHandel出来るかチェックする関数
-    func application(_ application: UIApplication,
-                     didReceiveRemoteNotification notification: [AnyHashable : Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if Auth.auth().canHandleNotification(notification) {
-            completionHandler(.noData)
-            return
-        }
-        // エラーの時の処理を書く
-    }
 }
 
 extension AppDelegate: FUIAuthDelegate {
@@ -95,6 +82,13 @@ extension AppDelegate: FUIAuthDelegate {
         self.authUI.providers = providers
     }
     
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        return FUIAuthPickerViewController(nibName: "LoginViewController",
+                                                 bundle: Bundle.main,
+                                                 authUI: authUI)
+    }
+
+    
     //　認証画面から離れたときに呼ばれる（キャンセルボタン押下含む）
     public func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?){
         // 認証に成功した場合
@@ -104,5 +98,6 @@ extension AppDelegate: FUIAuthDelegate {
         }
         // 認証に失敗した場合
     }
+    
 }
 
