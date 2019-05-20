@@ -7,12 +7,32 @@
 //
 
 import UIKit
+import Firebase
+import TwitterKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    override init() {
+        super.init()
+        startTwitterInstanceShare()
+    }
+    
+    func startTwitterInstanceShare() {
+        guard let API_KEY = KeyManager().getValue(key: "TWITTER_API_KEY") as? String else {
+            return
+        }
+        guard let API_SECRET_KEY = KeyManager().getValue(key: "TWITTER_API_SECRET_KEY") as? String else {
+            return
+        }
+        FirebaseApp.configure()
+        TWTRTwitter.sharedInstance().start(
+            withConsumerKey: API_KEY,
+            consumerSecret: API_SECRET_KEY)
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

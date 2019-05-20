@@ -25,10 +25,8 @@
 		469A69F2227FAEE8002A82ED /* TaskView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469A69F1227FAEE8002A82ED /* TaskView.storyboard */; };
 		469A69F6227FB587002A82ED /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A69F5227FB587002A82ED /* BottomButtonView.swift */; };
 		469A69F8227FB599002A82ED /* BottomButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 469A69F7227FB599002A82ED /* BottomButtonView.xib */; };
-		469A69FA227FC956002A82ED /* BottomButtonViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A69F9227FC956002A82ED /* BottomButtonViewPresenter.swift */; };
 		469A69FC228007B9002A82ED /* TodoInputFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */; };
-		469A69FF22811DD3002A82ED /* UIExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469A69FE22811DD3002A82ED /* UIExample.storyboard */; };
-		469A6A0122811F53002A82ED /* UIExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6A0022811F53002A82ED /* UIExampleViewController.swift */; };
+		46E474142292904400391094 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E474132292904400391094 /* KeyManager.swift */; };
 		46E740A62291631B00E0ADD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A52291631B00E0ADD0 /* LoginViewController.swift */; };
 		46E740A82291633000E0ADD0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A72291633000E0ADD0 /* LoginPresenter.swift */; };
 		46E740AA2291633D00E0ADD0 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A92291633D00E0ADD0 /* LoginModel.swift */; };
@@ -61,10 +59,8 @@
 		469A69F1227FAEE8002A82ED /* TaskView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskView.storyboard; sourceTree = "<group>"; };
 		469A69F5227FB587002A82ED /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		469A69F7227FB599002A82ED /* BottomButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomButtonView.xib; sourceTree = "<group>"; };
-		469A69F9227FC956002A82ED /* BottomButtonViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonViewPresenter.swift; sourceTree = "<group>"; };
 		469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInputFormViewController.swift; sourceTree = "<group>"; };
-		469A69FE22811DD3002A82ED /* UIExample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UIExample.storyboard; sourceTree = "<group>"; };
-		469A6A0022811F53002A82ED /* UIExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExampleViewController.swift; sourceTree = "<group>"; };
+		46E474132292904400391094 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
 		46E740A52291631B00E0ADD0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		46E740A72291633000E0ADD0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		46E740A92291633D00E0ADD0 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -171,9 +167,17 @@
 			children = (
 				469A69F7227FB599002A82ED /* BottomButtonView.xib */,
 				469A69F5227FB587002A82ED /* BottomButtonView.swift */,
-				469A69F9227FC956002A82ED /* BottomButtonViewPresenter.swift */,
 			);
 			path = BottomButtonView;
+			sourceTree = "<group>";
+		};
+		46E4741222928FF200391094 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				469A69FD228100E4002A82ED /* BottomButtonView */,
+				469A69EC227FAE5C002A82ED /* TaskView */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 		46E740A4229162F500E0ADD0 /* Login */ = {
@@ -190,8 +194,8 @@
 		46E7A43C2274767700082EBF /* util */ = {
 			isa = PBXGroup;
 			children = (
-				469A69FD228100E4002A82ED /* BottomButtonView */,
-				469A69EC227FAE5C002A82ED /* TaskView */,
+				46E474132292904400391094 /* KeyManager.swift */,
+				46E4741222928FF200391094 /* views */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -209,8 +213,6 @@
 		46E7A43E2274771300082EBF /* src */ = {
 			isa = PBXGroup;
 			children = (
-				469A69FE22811DD3002A82ED /* UIExample.storyboard */,
-				469A6A0022811F53002A82ED /* UIExampleViewController.swift */,
 				46E7A43C2274767700082EBF /* util */,
 				46E740A4229162F500E0ADD0 /* Login */,
 				468290F72274701D00807757 /* Calendar */,
@@ -305,7 +307,6 @@
 				46E740AE2292119500E0ADD0 /* KeyInfo.plist in Resources */,
 				46E7A43B2274765200082EBF /* LaunchScreen.storyboard in Resources */,
 				469A69E9227ECB02002A82ED /* List.storyboard in Resources */,
-				469A69FF22811DD3002A82ED /* UIExample.storyboard in Resources */,
 				468290EB2274461B00807757 /* Assets.xcassets in Resources */,
 				46E740AC2291636B00E0ADD0 /* Login.storyboard in Resources */,
 			);
@@ -329,6 +330,8 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -340,6 +343,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -354,10 +359,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todoApp/Pods-todoApp-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -391,9 +398,9 @@
 			files = (
 				4682910B227471BD00807757 /* TodoInputModel.swift in Sources */,
 				468291052274718F00807757 /* ListViewController.swift in Sources */,
-				469A69FA227FC956002A82ED /* BottomButtonViewPresenter.swift in Sources */,
 				469A69F0227FAEB4002A82ED /* TaskViewViewController.swift in Sources */,
 				46829109227471AF00807757 /* TodoInputPresenter.swift in Sources */,
+				46E474142292904400391094 /* KeyManager.swift in Sources */,
 				468291012274717000807757 /* ListPresenter.swift in Sources */,
 				468290FD2274713100807757 /* CalendarPresenter.swift in Sources */,
 				468290FB2274712000807757 /* CalenderViewController.swift in Sources */,
@@ -406,7 +413,6 @@
 				46E740A62291631B00E0ADD0 /* LoginViewController.swift in Sources */,
 				468291032274718000807757 /* ListModel.swift in Sources */,
 				468290E42274461A00807757 /* AppDelegate.swift in Sources */,
-				469A6A0122811F53002A82ED /* UIExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

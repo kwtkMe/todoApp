@@ -10,7 +10,9 @@ target 'todoApp' do
   pod 'CalculateCalendarLogic'
   pod 'Eureka'
   pod 'Firebase/Auth'
+  pod 'TwitterKit'	
   pod 'GoogleSignIn'
+
 
   # Pods for todoApp
 

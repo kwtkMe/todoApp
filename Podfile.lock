@@ -36,6 +36,9 @@ PODS:
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
+  - TwitterCore (3.2.0)
+  - TwitterKit (3.4.2):
+    - TwitterCore (>= 3.2.0)
 
 DEPENDENCIES:
   - CalculateCalendarLogic
@@ -44,6 +47,7 @@ DEPENDENCIES:
   - FSCalendar
   - GoogleSignIn
   - RealmSwift
+  - TwitterKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -60,6 +64,8 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Realm
     - RealmSwift
+    - TwitterCore
+    - TwitterKit
 
 SPEC CHECKSUMS:
   CalculateCalendarLogic: 27db31b8f27a42869ecf7ad0d43963a05af14193
@@ -75,7 +81,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
+  TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 3570fa7657b540fc3a4709d1a30757a27ddcc633
+PODFILE CHECKSUM: 2bab1eeb3be12982777659de8118844c5895c95f
 
 COCOAPODS: 1.5.3
