@@ -9,17 +9,22 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    // 認証に使用するプロバイダの選択
+    let providers: [FUIAuthProvider] = [
+        FUITwitterAuth(),
+        FUIGoogleAuth()
+    ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
         // Firebaseの認証に関する設定
-        FirebaseApp.configure()
+        configureFirebase()
         
         // 画面に関する設定
         let taskViewVC = UIStoryboard(
@@ -34,36 +39,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
+}
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+// Firebaseに関係するメソッド
+extension AppDelegate {
+    private func configureFirebase() {
+        FirebaseApp.configure()
+        startTwitterInstanceShare()
+        configureFirebaseUI()
     }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
+    private func startTwitterInstanceShare() {
+        guard let API_KEY = KeyManager().getValue(key: "TWITTER_API_KEY") as? String else {
+            return
+        }
+        guard let API_SECRET_KEY = KeyManager().getValue(key: "TWITTER_API_SECRET_KEY") as? String else {
+            return
+        }
+        TWTRTwitter.sharedInstance().start(withConsumerKey: API_KEY,
+                                           consumerSecret: API_SECRET_KEY)
     }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    // facebook&Google&電話番号認証時に呼ばれる関数
+    func application(_ app: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
+        // GoogleもしくはFacebook認証の場合、trueを返す
+        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
+            return true
+        }
+        // 電話番号認証の場合、trueを返す
+        if Auth.auth().canHandle(url) {
+            return true
+        }
+        return false
     }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    // 電話番号認証の場合に通知をHandel出来るかチェックする関数
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification notification: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Auth.auth().canHandleNotification(notification) {
+            completionHandler(.noData)
+            return
+        }
+        // エラーの時の処理を書く
     }
-
 }
 
 extension AppDelegate: FUIAuthDelegate {
     var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!}}
-    // 認証に使用するプロバイダの選択
-    let providers: [FUIAuthProvider] = [
-        FUITwitterAuth(),
-        FUIGoogleAuth()
-    ]
+    
+    private func configureFirebaseUI() {
+        self.authUI.delegate = self
+        self.authUI.providers = providers
+    }
+    
+    //　認証画面から離れたときに呼ばれる（キャンセルボタン押下含む）
+    public func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?){
+        // 認証に成功した場合
+        if error == nil {
+            // ログイン用のモーダル(LoginViewController)を退避させる
+            // ユーザ情報を更新
+        }
+        // 認証に失敗した場合
+    }
 }
 

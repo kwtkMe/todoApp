@@ -98,9 +98,7 @@ DEPENDENCIES:
   - FirebaseUI/Google
   - FirebaseUI/Twitter
   - FSCalendar
-  - GoogleSignIn
   - RealmSwift
-  - TwitterKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -147,6 +145,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 942bb0931290aeddcb818e7550007aa29a0ed2e2
+PODFILE CHECKSUM: d299442e39aaae29cbfbb2ba517f2733ede18000
 
 COCOAPODS: 1.5.3
