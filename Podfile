@@ -13,9 +13,6 @@ target 'todoApp' do
   pod 'Firebase/Core'
   pod 'FirebaseUI/Twitter'
   pod 'FirebaseUI/Google'
-  pod 'TwitterKit'	
-  pod 'GoogleSignIn'
-
 
   # Pods for todoApp
 
