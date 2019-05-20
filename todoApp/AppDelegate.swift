@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     override init() {
         super.init()
+        FirebaseApp.configure()
         startTwitterInstanceShare()
     }
     
@@ -28,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let API_SECRET_KEY = KeyManager().getValue(key: "TWITTER_API_SECRET_KEY") as? String else {
             return
         }
-        FirebaseApp.configure()
         TWTRTwitter.sharedInstance().start(
             withConsumerKey: API_KEY,
             consumerSecret: API_SECRET_KEY)
