@@ -27,6 +27,7 @@
 		469A69F8227FB599002A82ED /* BottomButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 469A69F7227FB599002A82ED /* BottomButtonView.xib */; };
 		469A69FC228007B9002A82ED /* TodoInputFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */; };
 		46E474142292904400391094 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E474132292904400391094 /* KeyManager.swift */; };
+		46E474162292A41600391094 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46E474152292A41600391094 /* GoogleService-Info.plist */; };
 		46E740A62291631B00E0ADD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A52291631B00E0ADD0 /* LoginViewController.swift */; };
 		46E740A82291633000E0ADD0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A72291633000E0ADD0 /* LoginPresenter.swift */; };
 		46E740AA2291633D00E0ADD0 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A92291633D00E0ADD0 /* LoginModel.swift */; };
@@ -61,6 +62,7 @@
 		469A69F7227FB599002A82ED /* BottomButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomButtonView.xib; sourceTree = "<group>"; };
 		469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInputFormViewController.swift; sourceTree = "<group>"; };
 		46E474132292904400391094 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
+		46E474152292A41600391094 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46E740A52291631B00E0ADD0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		46E740A72291633000E0ADD0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		46E740A92291633D00E0ADD0 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				468290EA2274461B00807757 /* Assets.xcassets */,
 				468290EF2274461B00807757 /* Info.plist */,
 				46E740AD2292119500E0ADD0 /* KeyInfo.plist */,
+				46E474152292A41600391094 /* GoogleService-Info.plist */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				46E740AE2292119500E0ADD0 /* KeyInfo.plist in Resources */,
 				46E7A43B2274765200082EBF /* LaunchScreen.storyboard in Resources */,
 				469A69E9227ECB02002A82ED /* List.storyboard in Resources */,
+				46E474162292A41600391094 /* GoogleService-Info.plist in Resources */,
 				468290EB2274461B00807757 /* Assets.xcassets in Resources */,
 				46E740AC2291636B00E0ADD0 /* Login.storyboard in Resources */,
 			);
@@ -332,6 +336,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -345,6 +350,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -358,11 +364,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todoApp/Pods-todoApp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
 			);
