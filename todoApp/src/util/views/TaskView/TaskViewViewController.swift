@@ -31,12 +31,12 @@ class TaskViewViewController: UIViewController {
     
     @objc func didFirebaseLoginstateChangedNotification(_ notification: Notification) {
         if let state = firebase.authUI.auth?.currentUser {
-            userButton.image = state.photoURL?.toUIImage()
+            let userImage: UIImage = state.photoURL?.toUIImage() ?? UIImage(named: "user")!
+            userButton.image = userImage.withRenderingMode(.alwaysOriginal)
             setupViews()
         } else {
-            userButton.image = UIImage(named: "user-100")
+            userButton.image = UIImage(named: "user")!.withRenderingMode(.alwaysOriginal)
             setupViews()
-//            present(view, animated: true, completion: nil)
             let authUI = FUIAuth.defaultAuthUI()!
             let authViewController = authUI.authViewController()
             present(authViewController, animated: true, completion: nil)
@@ -86,20 +86,26 @@ class TaskViewViewController: UIViewController {
     }
     
     @IBAction func tapUserButton(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "ログアウト", message: "ログアウトしますか？", preferredStyle: UIAlertController.Style.alert)
-        let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel,
-                                         handler:{ (action: UIAlertAction!) in })
-        let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,
-                                          handler:{(action: UIAlertAction!) in
-                                            do {
-                                                try self.firebase.authUI.auth?.signOut()
-                                            } catch let signOutError as NSError {
-                                                print ("Error signing out: %@", signOutError)
-                                            }
-        })
-        alert.addAction(cancelAction)
-        alert.addAction(defaultAction)
-        present(alert, animated: true, completion: nil)
+        if let state = firebase.authUI.auth?.currentUser {
+            let alert = UIAlertController(title: "ログアウト", message: "ログアウトしますか？", preferredStyle: UIAlertController.Style.alert)
+            let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel,
+                                             handler:{ (action: UIAlertAction!) in })
+            let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,
+                                              handler:{(action: UIAlertAction!) in
+                                                do {
+                                                    try self.firebase.authUI.auth?.signOut()
+                                                } catch let signOutError as NSError {
+                                                    print ("Error signing out: %@", signOutError)
+                                                }
+            })
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+            present(alert, animated: true, completion: nil)
+        } else {
+            let authUI = FUIAuth.defaultAuthUI()!
+            let authViewController = authUI.authViewController()
+            present(authViewController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func tapSegmentedControl(_ sender: UISegmentedControl) {

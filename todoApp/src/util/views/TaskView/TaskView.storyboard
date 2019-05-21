@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="0B1-Gk-2j1"/>
                     </view>
                     <navigationItem key="navigationItem" id="z3s-gf-9wL">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="user" style="plain" id="5aV-Wh-Mlu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="user" landscapeImage="user" style="plain" id="5aV-Wh-Mlu">
                             <connections>
                                 <action selector="tapUserButton:" destination="hLc-xr-UJY" id="8JZ-kf-JL7"/>
                             </connections>
