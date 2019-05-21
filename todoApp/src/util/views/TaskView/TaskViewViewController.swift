@@ -7,10 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
 class TaskViewViewController: UIViewController {
     @IBOutlet weak var userButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    // Firebasen認証のインスタンス
+    let firebaseAuth = Auth.auth()
+    // NotificationCenter
+    let notification = NotificationCenter.default
+    
+    deinit {
+        notification.removeObserver(self)
+    }
+    
+    func initObservers() {
+        notification.addObserver(self,
+                                 selector: #selector(didFirebaseLoginstateChangedNotification(_:)),
+                                 name: .DidFirebaseLoginstateChanged, object: nil)
+    }
+    
+    @objc func didFirebaseLoginstateChangedNotification(_ notification: Notification) {
+        let view = UIStoryboard(
+            name: "Login",
+            bundle: nil)
+            .instantiateViewController(
+                withIdentifier: "initial") as! LoginViewController
+        
+        if let state = firebaseAuth.currentUser {
+            userButton.image = state.photoURL?.toUIImage()
+            setupViews()
+        } else {
+            userButton.image = UIImage(named: "user-100")
+            setupViews()
+            present(view, animated: true, completion: nil)
+        }
+    }
     
     private lazy var calendarViewController: CalendarViewController = {
         let view = UIStoryboard(
@@ -39,7 +71,8 @@ class TaskViewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
+        initObservers()
+        self.notification.post(name: .DidFirebaseLoginstateChanged, object: nil)
     }
     
     private func setupViews() {
@@ -53,7 +86,20 @@ class TaskViewViewController: UIViewController {
     }
     
     @IBAction func tapUserButton(_ sender: UIBarButtonItem) {
-        
+        let alert = UIAlertController(title: "ログアウト", message: "ログアウトしますか？", preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel,
+                                         handler:{ (action: UIAlertAction!) in })
+        let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,
+                                          handler:{(action: UIAlertAction!) in
+                                            do {
+                                                try self.firebaseAuth.signOut()
+                                            } catch let signOutError as NSError {
+                                                print ("Error signing out: %@", signOutError)
+                                            }
+        })
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tapSegmentedControl(_ sender: UISegmentedControl) {

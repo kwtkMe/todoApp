@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="B48-g7-K6V">
             <objects>
-                <viewController id="A58-5p-cVc" customClass="LoginViewController" customModule="todoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial" id="A58-5p-cVc" customClass="LoginViewController" customModule="todoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RUh-Au-K0N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

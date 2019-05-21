@@ -8,11 +8,37 @@
 
 import UIKit
 import FSCalendar
+import Firebase
 
 final class CalendarViewController: UIViewController {
     @IBOutlet private weak var calendar: FSCalendar!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var bottomButtonView: BottomButtonView!
+    
+    // Firebasen認証のインスタンス
+    let firebaseAuth = Auth.auth()
+    // NotificationCenter
+    let notification = NotificationCenter.default
+    
+    deinit {
+        notification.removeObserver(self)
+    }
+    
+    func initObservers() {
+        notification.addObserver(self,
+                                 selector: #selector(didFirebaseLoginstateChangedNotification(_:)),
+                                 name: .DidFirebaseLoginstateChanged, object: nil)
+    }
+    
+    @objc func didFirebaseLoginstateChangedNotification(_ notification: Notification) {
+        if let state = firebaseAuth.currentUser {
+            // ユーザ情報を更新
+            setupViews()
+        } else {
+            // ユーザ情報を更新
+            setupViews()
+        }
+    }
     
     private var presenter: CalendarPresenterInput!
     

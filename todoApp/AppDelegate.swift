@@ -21,6 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FUITwitterAuth(),
         FUIGoogleAuth()
     ]
+    
+    // Firebase認証のログイン状態についてのハンドラ
+    var handler = Auth.auth()
+    // NotificationCenter
+    let notification = NotificationCenter.default
+    
+    deinit {
+        notification.removeObserver(self)
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Firebaseの認証に関する設定
@@ -80,6 +89,19 @@ extension AppDelegate: FUIAuthDelegate {
     private func configureFirebaseUI() {
         self.authUI.delegate = self
         self.authUI.providers = providers
+        
+        
+        handler.addStateDidChangeListener{ (auth, user) in
+            self.notification.post(name: .DidFirebaseLoginstateChanged, object: nil)
+        }
+    }
+    
+    @objc func didFirebaseLoginNotification(_ notification: Notification) {
+        
+    }
+    
+    @objc func didFirebaseLogoutNotification(_ notification: Notification) {
+        
     }
     
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
@@ -87,14 +109,12 @@ extension AppDelegate: FUIAuthDelegate {
                                                  bundle: Bundle.main,
                                                  authUI: authUI)
     }
-
     
-    //　認証画面から離れたときに呼ばれる（キャンセルボタン押下含む）
+    //　認証画面から離れたときに呼ばれる
     public func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?){
         // 認証に成功した場合
         if error == nil {
-            // ログイン用のモーダル(LoginViewController)を退避させる
-            // ユーザ情報を更新
+            // ...
         }
         // 認証に失敗した場合
     }

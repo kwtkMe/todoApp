@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="0B1-Gk-2j1"/>
                     </view>
                     <navigationItem key="navigationItem" id="z3s-gf-9wL">
-                        <barButtonItem key="leftBarButtonItem" title="login" style="plain" id="5aV-Wh-Mlu">
+                        <barButtonItem key="leftBarButtonItem" image="user" style="plain" id="5aV-Wh-Mlu">
                             <connections>
                                 <action selector="tapUserButton:" destination="hLc-xr-UJY" id="8JZ-kf-JL7"/>
                             </connections>
@@ -68,4 +68,7 @@
             <point key="canvasLocation" x="93.599999999999994" y="-611.24437781109452"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="user" width="25" height="25"/>
+    </resources>
 </document>
