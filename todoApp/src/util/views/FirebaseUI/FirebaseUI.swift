@@ -1,5 +1,5 @@
 //
-//  FirebaseUI.swift
+//  Firebase.swift
 //  todoApp
 //
 //  Created by RIVER on 2019/05/21.
@@ -8,14 +8,14 @@
 
 import UIKit
 import Firebase
-
+import FirebaseFirestore
 import FirebaseUI
 import TwitterKit
 
 
-class FirebaseUI: NSObject {
+class Firebase: NSObject {
     
-    static let sharedInstance = FirebaseUI()
+    static let sharedInstance = Firebase()
     
     // 認証に使用するプロバイダの選択
     let providers: [FUIAuthProvider] = [
@@ -27,7 +27,7 @@ class FirebaseUI: NSObject {
     // Firebase認証のログイン状態についてのハンドラ
     var handler = Auth.auth()
     // Firestoreのインスタンス
-    let db = Firestore.firestore()
+    let db: Firestore! = Firestore.firestore()
     
     // NotificationCenter
     let notification = NotificationCenter.default
@@ -42,6 +42,7 @@ class FirebaseUI: NSObject {
 
         authUI.delegate = self
         authUI.providers = providers
+        configureFirebase()
 
         handler.addStateDidChangeListener{ (auth, user) in
             self.notification.post(name: .DidFirebaseLoginstateChanged, object: nil)
@@ -51,8 +52,8 @@ class FirebaseUI: NSObject {
 
 }
 
-extension FirebaseUI: FUIAuthDelegate {
-    private func configureFirebaseUI() {
+extension Firebase: FUIAuthDelegate {
+    private func configureFirebase() {
         self.authUI.delegate = self
         self.authUI.providers = providers
 
