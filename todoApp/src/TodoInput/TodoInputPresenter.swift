@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 // ここでは書き込みの責務のみ扱う
 protocol TodoInputPresenterInput {
@@ -35,7 +36,23 @@ final class TodoInputPresenter: TodoInputPresenterInput {
     }
     
     func registerTask(taskName: String, taskTime: String?) {
-        // Firebaseに保存する
+        if let state = firebase.authUI.auth?.currentUser {
+            let user: String! = state.uid
+            let data: [String: String] = [
+                "name": taskName,
+                "time": taskTime ?? ""
+            ]
+            
+            firebase.db.collection(user).addDocument(data: data){ err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added!")
+                }
+            }
+        } else {
+            // ...
+        }
     }
     
     func willTransitionToNextViewController() {       
