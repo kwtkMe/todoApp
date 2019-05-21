@@ -201,7 +201,6 @@
 		46E4741C2293B59400391094 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				46E4741D2293B5CE00391094 /* Firebase.swift */,
 				46E740A4229162F500E0ADD0 /* Login */,
 			);
 			path = Firebase;
@@ -222,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				46E474132292904400391094 /* KeyManager.swift */,
+				46E4741D2293B5CE00391094 /* Firebase.swift */,
 				46E4741722937F6B00391094 /* extensions */,
 				46E4741222928FF200391094 /* views */,
 			);
