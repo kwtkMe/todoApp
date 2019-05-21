@@ -17,7 +17,7 @@ final class CalendarViewController: UIViewController {
     @IBOutlet private weak var bottomButtonView: BottomButtonView!
     
     // Firebasen認証のインスタンス
-    let firebase = FirebaseUI.sharedInstance
+    let firebase = Firebase.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default
     

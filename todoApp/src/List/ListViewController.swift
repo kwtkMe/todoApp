@@ -13,7 +13,7 @@ final class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // Firebasen認証のインスタンス
-    let firebase = FirebaseUI.sharedInstance
+    let firebase = Firebase.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default
     
