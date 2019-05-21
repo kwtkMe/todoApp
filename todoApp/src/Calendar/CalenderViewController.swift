@@ -9,6 +9,7 @@
 import UIKit
 import FSCalendar
 import Firebase
+import FirebaseUI
 
 final class CalendarViewController: UIViewController {
     @IBOutlet private weak var calendar: FSCalendar!
@@ -63,7 +64,24 @@ final class CalendarViewController: UIViewController {
     }
     
     @objc func tapBottomButton(_ sender: UIButton) {
-        presenter.willTransitionToNextViewController()
+        if let state = firebase.authUI.auth?.currentUser {
+            presenter.willTransitionToNextViewController()
+        } else {
+            let alert = UIAlertController(title: "ユーザ情報なし", message: "ログインしてください", preferredStyle: UIAlertController.Style.alert)
+            let cancelAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel,
+                                             handler:{ (action: UIAlertAction!) in })
+            let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,
+                                              handler:{(action: UIAlertAction!) in
+                                                do {
+                                                    self.notification.post(name: .DidFirebaseLoginstateChanged, object: nil)
+                                                } catch let signOutError as NSError {
+                                                    print ("Error signing out: %@", signOutError)
+                                                }
+            })
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+            present(alert, animated: true, completion: nil)
+        }
     }
 
 }
