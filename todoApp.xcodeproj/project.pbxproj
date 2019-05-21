@@ -182,7 +182,7 @@
 		46E4741222928FF200391094 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				46E4741C2293B59400391094 /* FirebaseUI */,
+				46E4741C2293B59400391094 /* Firebase */,
 				469A69FD228100E4002A82ED /* BottomButtonView */,
 				469A69EC227FAE5C002A82ED /* TaskView */,
 			);
@@ -198,13 +198,13 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
-		46E4741C2293B59400391094 /* FirebaseUI */ = {
+		46E4741C2293B59400391094 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
 				46E4741D2293B5CE00391094 /* Firebase.swift */,
 				46E740A4229162F500E0ADD0 /* Login */,
 			);
-			path = FirebaseUI;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		46E740A4229162F500E0ADD0 /* Login */ = {
