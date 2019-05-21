@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 import FirebaseUI
 import TwitterKit
 
@@ -21,12 +22,13 @@ class FirebaseUI: NSObject {
         FUITwitterAuth(),
         FUIGoogleAuth()
     ]
-
     //Firebase認証についてのUI
      var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!}}
-
     // Firebase認証のログイン状態についてのハンドラ
     var handler = Auth.auth()
+    // Firestoreのインスタンス
+    let db = Firestore.firestore()
+    
     // NotificationCenter
     let notification = NotificationCenter.default
 

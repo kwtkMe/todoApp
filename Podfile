@@ -11,6 +11,7 @@ target 'todoApp' do
   pod 'Eureka'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'FirebaseUI/Twitter'
   pod 'FirebaseUI/Google'
 

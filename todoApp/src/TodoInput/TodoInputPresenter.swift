@@ -8,8 +8,10 @@
 
 import Foundation
 
+// ここでは書き込みの責務のみ扱う
 protocol TodoInputPresenterInput {
-    func registerTask()
+    // 書き込み
+    func registerTask(taskName: String, taskTime: String?)
     func willTransitionToNextViewController()
 }
 
@@ -29,13 +31,11 @@ final class TodoInputPresenter: TodoInputPresenterInput {
         self.model = model
     }
     
-    func registerTask() {
-        
+    func registerTask(taskName: String, taskTime: String?) {
+        // Firebaseに保存する
     }
     
-    func willTransitionToNextViewController() {
-        // データソースと連携
-
+    func willTransitionToNextViewController() {       
         // 画面遷移
         view.transitionToNextViewController()
     }

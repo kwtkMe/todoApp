@@ -58,18 +58,18 @@ final class TodoInputViewController: UIViewController {
         }
         
         let taskName = taskNameRow.value!
-        // 時間指定について判断
-        guard let taskTime = taskTimeRow.value else {
-            return
-        }
-        
+        // 時間指定についてはOptional
+        let taskTimeOption = taskTimeRow.value
+        var taskTime: String?
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "jp_JP") as Locale
-        dateFormatter.dateFormat = "HH:mm:ss"
-
-        print("taskName is \(taskName)")
-        print("taskTime is \(dateFormatter.string(from: taskTime as Date))")
-        
+        dateFormatter.dateFormat = "HH:mm"
+        if let time = taskTimeOption {
+            taskTime = dateFormatter.string(from: time)
+        } else {
+            taskTime = nil
+        }
+        presenter.registerTask(taskName: taskName, taskTime: taskTime)
         presenter.willTransitionToNextViewController()
     }
 

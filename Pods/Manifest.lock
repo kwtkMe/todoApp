@@ -1,4 +1,10 @@
 PODS:
+  - BoringSSL-GRPC (0.0.3):
+    - BoringSSL-GRPC/Implementation (= 0.0.3)
+    - BoringSSL-GRPC/Interface (= 0.0.3)
+  - BoringSSL-GRPC/Implementation (0.0.3):
+    - BoringSSL-GRPC/Interface (= 0.0.3)
+  - BoringSSL-GRPC/Interface (0.0.3)
   - CalculateCalendarLogic (0.2.5)
   - Eureka (5.0.0)
   - Firebase/Auth (5.4.1):
@@ -9,6 +15,9 @@ PODS:
     - FirebaseAnalytics (= 5.0.1)
   - Firebase/CoreOnly (5.4.1):
     - FirebaseCore (= 5.0.6)
+  - Firebase/Firestore (5.4.1):
+    - Firebase/CoreOnly
+    - FirebaseFirestore (= 0.12.6)
   - FirebaseAnalytics (5.0.1):
     - FirebaseCore (~> 5.0)
     - FirebaseInstanceID (~> 3.0)
@@ -19,6 +28,19 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.6):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseFirestore (0.12.6):
+    - FirebaseCore (~> 5.0)
+    - FirebaseFirestore/abseil-cpp (= 0.12.6)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - nanopb (~> 0.3.8)
+    - Protobuf (~> 3.1)
+  - FirebaseFirestore/abseil-cpp (0.12.6):
+    - FirebaseCore (~> 5.0)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - nanopb (~> 0.3.8)
+    - Protobuf (~> 3.1)
   - FirebaseInstanceID (3.1.1):
     - FirebaseCore (~> 5.0)
   - FirebaseUI/Auth (6.2.1):
@@ -50,12 +72,35 @@ PODS:
     - GoogleUtilities/Environment
   - GoogleUtilities/UserDefaults (6.1.0):
     - GoogleUtilities/Logger
+  - gRPC (1.20.0):
+    - gRPC-RxLibrary (= 1.20.0)
+    - gRPC/Main (= 1.20.0)
+  - gRPC-Core (1.20.0):
+    - gRPC-Core/Implementation (= 1.20.0)
+    - gRPC-Core/Interface (= 1.20.0)
+  - gRPC-Core/Implementation (1.20.0):
+    - BoringSSL-GRPC (= 0.0.3)
+    - gRPC-Core/Interface (= 1.20.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.20.0)
+  - gRPC-ProtoRPC (1.20.0):
+    - gRPC-ProtoRPC/Main (= 1.20.0)
+  - gRPC-ProtoRPC/Main (1.20.0):
+    - gRPC (= 1.20.0)
+    - gRPC-RxLibrary (= 1.20.0)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.20.0)
+  - gRPC/Main (1.20.0):
+    - gRPC-Core (= 1.20.0)
+    - gRPC-RxLibrary (= 1.20.0)
   - GTMSessionFetcher/Core (1.2.2)
+  - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Protobuf (3.7.0)
   - Realm (3.15.0):
     - Realm/Headers (= 3.15.0)
   - Realm/Headers (3.15.0)
@@ -70,6 +115,7 @@ DEPENDENCIES:
   - Eureka
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Firestore
   - FirebaseUI/Google
   - FirebaseUI/Twitter
   - FSCalendar
@@ -77,45 +123,61 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BoringSSL-GRPC
     - CalculateCalendarLogic
     - Eureka
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
     - FirebaseCore
+    - FirebaseFirestore
     - FirebaseInstanceID
     - FirebaseUI
     - FSCalendar
     - GoogleSignIn
     - GoogleToolboxForMac
     - GoogleUtilities
+    - gRPC
+    - gRPC-Core
+    - gRPC-ProtoRPC
+    - gRPC-RxLibrary
     - GTMSessionFetcher
+    - leveldb-library
     - nanopb
+    - Protobuf
     - Realm
     - RealmSwift
     - TwitterCore
     - TwitterKit
 
 SPEC CHECKSUMS:
+  BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   CalculateCalendarLogic: 27db31b8f27a42869ecf7ad0d43963a05af14193
   Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
   Firebase: 355bd535bfdacaa82a7fe8d9784115edefd6fc03
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
   FirebaseAuth: 096e457cdd4274412a66c4a35874787e411f5a03
   FirebaseCore: 4c28e3b9708ba48a765e76515f913a71596eb5dd
+  FirebaseFirestore: d4a3a7787624e612298a320da95935b8dc036c1d
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   FirebaseUI: c9e227a7d44e2e422a461cb3f4ead8dc5c7326e6
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GoogleUtilities: 84df567c76ca84f67b7bb40e769fdd4acc746a10
+  gRPC: d175f32a1f0ff0eafc768e38e8c0b8a9fcbacc65
+  gRPC-Core: b247504496d2bdf47e6a87690c0d48f8424b324a
+  gRPC-ProtoRPC: d49c7074c6a5e5a9f18f9b5a1c6d94787334bcbe
+  gRPC-RxLibrary: 3b5272bfdd136c3bc1383ffdfc210404b5d8400a
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Realm: 9b834e1be6062f544805252c812348872dc5d4ed
   RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: d299442e39aaae29cbfbb2ba517f2733ede18000
+PODFILE CHECKSUM: a64d4c486ef29958b9db90055630fd895a1d9460
 
 COCOAPODS: 1.5.3
