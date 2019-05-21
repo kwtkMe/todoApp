@@ -39,11 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func startTwitterInstanceShare() {
         guard let API_KEY = KeyManager().getValue(key: "TWITTER_API_KEY") as? String else {
-            print("Twitter API EROOR")
             return
         }
         guard let API_SECRET_KEY = KeyManager().getValue(key: "TWITTER_API_SECRET_KEY") as? String else {
-            print("Twitter API_SECRET EROOR")
             return
         }
         TWTRTwitter.sharedInstance().start(withConsumerKey: API_KEY,
