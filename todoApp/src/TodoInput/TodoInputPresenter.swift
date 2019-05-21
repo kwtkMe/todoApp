@@ -25,7 +25,7 @@ final class TodoInputPresenter: TodoInputPresenterInput {
     private weak var view: TodoInputPresenterOutput!
     private var model: TodoInputModelInput
     
-    // Firebase認証のインスタンス
+    // Firebaseのインスタンス
     let firebase = Firebase.sharedInstance
     
     init(dateSelected: String, view: TodoInputPresenterOutput, model: TodoInputModelInput) {

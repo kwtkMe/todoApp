@@ -14,7 +14,7 @@ class TaskViewViewController: UIViewController {
     @IBOutlet weak var userButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    // Firebasen認証のインスタンス
+    // Firebaseのインスタンス
     let firebase = Firebase.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default

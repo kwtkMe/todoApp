@@ -15,6 +15,7 @@ import TwitterKit
 
 class Firebase: NSObject {
     
+    // シングルトンとして運用
     static let sharedInstance = Firebase()
     
     // 認証に使用するプロバイダの選択

@@ -12,7 +12,7 @@ import Firebase
 final class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    // Firebasen認証のインスタンス
+    // Firebaseのインスタンス
     let firebase = Firebase.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default
