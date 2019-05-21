@@ -13,7 +13,7 @@
         <!--Task View View Controller-->
         <scene sceneID="1Hm-7E-VnI">
             <objects>
-                <viewController storyboardIdentifier="view" id="hLc-xr-UJY" customClass="TaskViewViewController" customModule="todoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="initial" id="hLc-xr-UJY" customClass="TaskViewViewController" customModule="todoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cZE-rJ-qrh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="0B1-Gk-2j1"/>
                     </view>
                     <navigationItem key="navigationItem" id="z3s-gf-9wL">
-                        <barButtonItem key="leftBarButtonItem" image="user" style="plain" id="5aV-Wh-Mlu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="user" style="plain" id="5aV-Wh-Mlu">
                             <connections>
                                 <action selector="tapUserButton:" destination="hLc-xr-UJY" id="8JZ-kf-JL7"/>
                             </connections>

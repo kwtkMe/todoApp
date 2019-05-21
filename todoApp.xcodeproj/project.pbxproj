@@ -30,6 +30,7 @@
 		46E474162292A41600391094 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46E474152292A41600391094 /* GoogleService-Info.plist */; };
 		46E4741922937F8B00391094 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4741822937F8B00391094 /* NotificationNameExtension.swift */; };
 		46E4741B229384EF00391094 /* TypeExchangeExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4741A229384EF00391094 /* TypeExchangeExtention.swift */; };
+		46E4741E2293B5CE00391094 /* FirebaseUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4741D2293B5CE00391094 /* FirebaseUI.swift */; };
 		46E740A62291631B00E0ADD0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A52291631B00E0ADD0 /* LoginViewController.swift */; };
 		46E740A82291633000E0ADD0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A72291633000E0ADD0 /* LoginPresenter.swift */; };
 		46E740AA2291633D00E0ADD0 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E740A92291633D00E0ADD0 /* LoginModel.swift */; };
@@ -67,6 +68,7 @@
 		46E474152292A41600391094 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46E4741822937F8B00391094 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		46E4741A229384EF00391094 /* TypeExchangeExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeExchangeExtention.swift; sourceTree = "<group>"; };
+		46E4741D2293B5CE00391094 /* FirebaseUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUI.swift; sourceTree = "<group>"; };
 		46E740A52291631B00E0ADD0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		46E740A72291633000E0ADD0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		46E740A92291633D00E0ADD0 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		46E4741222928FF200391094 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				46E4741C2293B59400391094 /* FirebaseUI */,
 				469A69FD228100E4002A82ED /* BottomButtonView */,
 				469A69EC227FAE5C002A82ED /* TaskView */,
 			);
@@ -193,6 +196,15 @@
 				46E4741A229384EF00391094 /* TypeExchangeExtention.swift */,
 			);
 			path = extensions;
+			sourceTree = "<group>";
+		};
+		46E4741C2293B59400391094 /* FirebaseUI */ = {
+			isa = PBXGroup;
+			children = (
+				46E4741D2293B5CE00391094 /* FirebaseUI.swift */,
+				46E740A4229162F500E0ADD0 /* Login */,
+			);
+			path = FirebaseUI;
 			sourceTree = "<group>";
 		};
 		46E740A4229162F500E0ADD0 /* Login */ = {
@@ -231,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				46E7A43C2274767700082EBF /* util */,
-				46E740A4229162F500E0ADD0 /* Login */,
 				468290F72274701D00807757 /* Calendar */,
 				468290F62274701700807757 /* List */,
 				468290F52274701200807757 /* TodoInput */,
@@ -441,6 +452,7 @@
 				46E740A62291631B00E0ADD0 /* LoginViewController.swift in Sources */,
 				468291032274718000807757 /* ListModel.swift in Sources */,
 				468290E42274461A00807757 /* AppDelegate.swift in Sources */,
+				46E4741E2293B5CE00391094 /* FirebaseUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

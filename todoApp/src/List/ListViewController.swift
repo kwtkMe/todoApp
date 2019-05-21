@@ -13,7 +13,7 @@ final class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // Firebasen認証のインスタンス
-    let firebaseAuth = Auth.auth()
+    let firebase = FirebaseUI.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default
     
@@ -28,7 +28,7 @@ final class ListViewController: UIViewController {
     }
     
     @objc func didFirebaseLoginstateChangedNotification(_ notification: Notification) {
-        if let state = firebaseAuth.currentUser {
+        if let state = firebase.authUI.auth?.currentUser {
             // ユーザ情報を更新
             setupViews()
         } else {

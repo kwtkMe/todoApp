@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import FirebaseUI
 
 class TaskViewViewController: UIViewController {
     @IBOutlet weak var userButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     // Firebasen認証のインスタンス
-    let firebaseAuth = Auth.auth()
+    let firebase = FirebaseUI.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default
     
@@ -28,19 +30,17 @@ class TaskViewViewController: UIViewController {
     }
     
     @objc func didFirebaseLoginstateChangedNotification(_ notification: Notification) {
-        let view = UIStoryboard(
-            name: "Login",
-            bundle: nil)
-            .instantiateViewController(
-                withIdentifier: "initial") as! LoginViewController
-        
-        if let state = firebaseAuth.currentUser {
+        if let state = firebase.authUI.auth?.currentUser {
             userButton.image = state.photoURL?.toUIImage()
             setupViews()
         } else {
             userButton.image = UIImage(named: "user-100")
             setupViews()
-            present(view, animated: true, completion: nil)
+//            present(view, animated: true, completion: nil)
+            let authUI = FUIAuth.defaultAuthUI()!
+            let authViewController = authUI.authViewController()
+            present(authViewController, animated: true, completion: nil)
+            
         }
     }
     
@@ -92,7 +92,7 @@ class TaskViewViewController: UIViewController {
         let defaultAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,
                                           handler:{(action: UIAlertAction!) in
                                             do {
-                                                try self.firebaseAuth.signOut()
+                                                try self.firebase.authUI.auth?.signOut()
                                             } catch let signOutError as NSError {
                                                 print ("Error signing out: %@", signOutError)
                                             }
