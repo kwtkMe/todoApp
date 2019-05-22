@@ -10,59 +10,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskTableViewCell" customModule="todoApp" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="118" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="todoApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="598" height="118"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="KGk-i7-Jjw" userLabel="Task Table View Cell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="598" height="117.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4w-N0-ghe">
-                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGI-VZ-A4Y">
+                        <rect key="frame" x="0.0" y="0.0" width="43.5" height="43.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="d4w-N0-ghe" secondAttribute="height" multiplier="1:1" id="da4-fm-kdm"/>
+                            <constraint firstAttribute="width" secondItem="JGI-VZ-A4Y" secondAttribute="height" multiplier="1:1" id="edC-wM-Yxk"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
-                        <state key="normal" title="Button" image="checkmark"/>
+                        <state key="normal" image="checkmark"/>
                         <state key="selected" image="checkmark_empty"/>
                     </button>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1eT-Is-yby">
-                        <rect key="frame" x="117.5" y="0.0" width="480.5" height="117.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="YDK-Jx-exN">
+                        <rect key="frame" x="43.5" y="0.0" width="276.5" height="43.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="taskName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9i-Jn-OXT">
-                                <rect key="frame" x="0.0" y="0.0" width="480.5" height="70.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="taskName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXP-qG-5Na">
+                                <rect key="frame" x="0.0" y="0.0" width="276.5" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaskTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMY-ap-tDn">
-                                <rect key="frame" x="0.0" y="70.5" width="480.5" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaskTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULt-fj-qth">
+                                <rect key="frame" x="0.0" y="26" width="276.5" height="17.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.46000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="ULt-fj-qth" firstAttribute="top" secondItem="gXP-qG-5Na" secondAttribute="bottom" id="eGn-6f-FQX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="u8P-EL-0nb"/>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="d4w-N0-ghe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4ha-gW-eUn"/>
-                    <constraint firstItem="d4w-N0-ghe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="71C-Ts-pEU"/>
-                    <constraint firstItem="1eT-Is-yby" firstAttribute="leading" secondItem="d4w-N0-ghe" secondAttribute="trailing" id="Fgj-Xn-Uu3"/>
-                    <constraint firstItem="1eT-Is-yby" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GHi-Wi-mtv"/>
-                    <constraint firstAttribute="bottom" secondItem="d4w-N0-ghe" secondAttribute="bottom" id="Zgq-tz-CyB"/>
-                    <constraint firstAttribute="bottom" secondItem="1eT-Is-yby" secondAttribute="bottom" id="kNc-Ib-Fww"/>
-                    <constraint firstAttribute="trailing" secondItem="1eT-Is-yby" secondAttribute="trailing" id="rm6-bY-5P3"/>
+                    <constraint firstAttribute="bottom" secondItem="YDK-Jx-exN" secondAttribute="bottom" id="1kn-Jq-Bia"/>
+                    <constraint firstAttribute="trailing" secondItem="YDK-Jx-exN" secondAttribute="trailing" id="6YL-QC-Amc"/>
+                    <constraint firstItem="JGI-VZ-A4Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6ia-ru-hBb"/>
+                    <constraint firstItem="YDK-Jx-exN" firstAttribute="leading" secondItem="JGI-VZ-A4Y" secondAttribute="trailing" id="JyR-uh-HPl"/>
+                    <constraint firstAttribute="bottom" secondItem="JGI-VZ-A4Y" secondAttribute="bottom" id="RMu-PI-7NE"/>
+                    <constraint firstItem="JGI-VZ-A4Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YY6-Ws-RTD"/>
+                    <constraint firstItem="YDK-Jx-exN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="aEm-Mi-2TL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="taskCompletionButton" destination="d4w-N0-ghe" id="LcJ-OV-iOV"/>
-                <outlet property="taskNameLabel" destination="i9i-Jn-OXT" id="mBy-se-pjY"/>
-                <outlet property="taskTimeLabel" destination="kMY-ap-tDn" id="GAS-Wg-3rc"/>
-            </connections>
-            <point key="canvasLocation" x="336.23188405797106" y="87.723214285714278"/>
         </tableViewCell>
     </objects>
     <resources>

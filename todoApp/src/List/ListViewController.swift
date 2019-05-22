@@ -49,7 +49,8 @@ final class ListViewController: UIViewController {
     }
     
     private func setupViews() {
-        
+//        // テーブルビューのセットアップ
+//        tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
 
 }
@@ -57,8 +58,7 @@ final class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     // セルを設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let testCell: UITableViewCell = UITableViewCell()
+        let testCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskTableViewCell
         return testCell
     }
     
@@ -71,7 +71,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     // セクションの名前を設定
     func tableView(tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
         
-        return ""
+        return "yeah_REIWAMARU"
     }
     
     // セクションの個数を設定
@@ -91,7 +91,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     {
         return true
     }
-    //スワイプしたセルを削除　※arrayNameは変数名に変更してください
+    //スワイプしたセルを削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             

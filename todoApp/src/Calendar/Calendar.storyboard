@@ -20,7 +20,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-1L-9n1" customClass="FSCalendar">
                                 <rect key="frame" x="0.0" y="20" width="375" height="400"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
                                         <integer key="value" value="0"/>
@@ -31,22 +30,65 @@
                                     <outlet property="delegate" destination="5Hk-Ki-v8L" id="xJk-qL-u1m"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adi-ee-aLa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="adi-ee-aLa">
                                 <rect key="frame" x="0.0" y="420.5" width="375" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="taskTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="t6P-LQ-GWz" customClass="TaskTableViewCell" customModule="todoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="58" id="0d7-la-RzH" customClass="TaskTableViewCell" customModule="todoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t6P-LQ-GWz" id="HoE-qC-ZfQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0d7-la-RzH" id="Ajf-bp-t11">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyK-0h-Kzh">
+                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="Bfu-S9-qAa"/>
+                                                        <constraint firstAttribute="width" secondItem="gyK-0h-Kzh" secondAttribute="height" multiplier="1:1" id="SRr-oh-fXM"/>
+                                                    </constraints>
+                                                    <state key="normal" image="checkmark_empty"/>
+                                                    <state key="selected" image="checkmark"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="taskName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZv-1j-HwG">
+                                                    <rect key="frame" x="60" y="0.0" width="180" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaskTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vW-zH-fp5">
+                                                    <rect key="frame" x="260" y="11" width="100" height="28.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="UxC-Zl-7d3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.46000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gyK-0h-Kzh" firstAttribute="top" secondItem="Ajf-bp-t11" secondAttribute="top" constant="10" id="7sl-ac-uW3"/>
+                                                <constraint firstAttribute="bottom" secondItem="gyK-0h-Kzh" secondAttribute="bottom" constant="10" id="9bH-e9-QC1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0vW-zH-fp5" secondAttribute="trailing" id="AVv-vB-4gp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0vW-zH-fp5" secondAttribute="bottom" id="ErE-CD-X8W"/>
+                                                <constraint firstItem="mZv-1j-HwG" firstAttribute="leading" secondItem="gyK-0h-Kzh" secondAttribute="trailing" constant="20" id="KdQ-Wb-Q3b"/>
+                                                <constraint firstItem="0vW-zH-fp5" firstAttribute="top" secondItem="Ajf-bp-t11" secondAttribute="topMargin" id="Ob1-eW-L3i"/>
+                                                <constraint firstItem="0vW-zH-fp5" firstAttribute="leading" secondItem="mZv-1j-HwG" secondAttribute="trailing" constant="20" id="Tqu-Xm-lD8"/>
+                                                <constraint firstItem="gyK-0h-Kzh" firstAttribute="leading" secondItem="Ajf-bp-t11" secondAttribute="leading" constant="10" id="Xw0-wC-J7x"/>
+                                                <constraint firstAttribute="bottom" secondItem="mZv-1j-HwG" secondAttribute="bottom" id="bDN-xA-gYW"/>
+                                                <constraint firstItem="mZv-1j-HwG" firstAttribute="top" secondItem="Ajf-bp-t11" secondAttribute="top" id="mya-Ar-LHv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskCompletionButton" destination="gyK-0h-Kzh" id="0VN-hY-jfb"/>
+                                            <outlet property="taskNameLabel" destination="mZv-1j-HwG" id="ASl-2N-v2n"/>
+                                            <outlet property="taskTimeLabel" destination="0vW-zH-fp5" id="9tM-NQ-XP4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="5Hk-Ki-v8L" id="rJo-5e-sk0"/>
-                                    <outlet property="delegate" destination="5Hk-Ki-v8L" id="79X-kA-wZE"/>
+                                    <outlet property="dataSource" destination="5Hk-Ki-v8L" id="nF1-XY-h6M"/>
+                                    <outlet property="delegate" destination="5Hk-Ki-v8L" id="knQ-Av-5g5"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQF-rc-dYk" customClass="BottomButtonView" customModule="todoApp" customModuleProvider="target">
@@ -82,4 +124,8 @@
             <point key="canvasLocation" x="405.60000000000002" y="-323.38830584707648"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark" width="30" height="30"/>
+        <image name="checkmark_empty" width="30" height="30"/>
+    </resources>
 </document>

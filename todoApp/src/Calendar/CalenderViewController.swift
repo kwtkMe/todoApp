@@ -45,6 +45,9 @@ final class CalendarViewController: UIViewController {
         let today: Date = NSDate() as Date
         calendar.select(today, scrollToDate: true)
         presenter.didSelectDate(didSelect: calendar.selectedDate!)
+        
+//        // テーブルビューのセットアップ
+//        tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
     
     @objc func tapBottomButton(_ sender: UIButton) {
@@ -85,26 +88,25 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     // セルを設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let testCell: UITableViewCell = UITableViewCell()
+        let testCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskTableViewCell
         return testCell
     }
         
     // セルの個数を設定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return 2
     }
         
     // セクションの名前を設定
     func tableView(tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
-        
-        return ""
+
+        return "yeah_REIWAMARU"
     }
-    
+
     // セクションの個数を設定
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
+
         return 1
     }
     

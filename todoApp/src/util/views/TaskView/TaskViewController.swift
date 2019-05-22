@@ -1,5 +1,5 @@
 //
-//  TaskViewViewController.swift
+//  TaskViewController.swift
 //  todoApp
 //
 //  Created by RIVER on 2019/05/06.
@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseUI
 
-class TaskViewViewController: UIViewController {
+class TaskViewController: UIViewController {
     @IBOutlet weak var userButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     

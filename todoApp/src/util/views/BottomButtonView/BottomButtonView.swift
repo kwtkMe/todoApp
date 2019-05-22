@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol BottomButtonViewOutput {
-    func tapButton(_ sender: UIButton)
-}
-
 final class BottomButtonView: UIView {
 
     @IBOutlet weak var button: UIButton!

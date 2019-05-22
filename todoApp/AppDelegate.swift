@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let taskViewVC = UIStoryboard(
             name: "TaskView",
             bundle: nil)
-            .instantiateViewController(withIdentifier: "initial") as! TaskViewViewController
+            .instantiateViewController(withIdentifier: "initial") as! TaskViewController
         let navigationController = UINavigationController(rootViewController: taskViewVC)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
