@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="118" id="KGk-i7-Jjw" customClass="TaskTableViewCell" customModule="todoApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="598" height="118"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="598" height="117.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4w-N0-ghe">
+                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="d4w-N0-ghe" secondAttribute="height" multiplier="1:1" id="da4-fm-kdm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                        <state key="normal" title="Button" image="checkmark"/>
+                        <state key="selected" image="checkmark_empty"/>
+                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="1eT-Is-yby">
+                        <rect key="frame" x="117.5" y="0.0" width="480.5" height="117.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="taskName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9i-Jn-OXT">
+                                <rect key="frame" x="0.0" y="0.0" width="480.5" height="70.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaskTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMY-ap-tDn">
+                                <rect key="frame" x="0.0" y="70.5" width="480.5" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.46000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="d4w-N0-ghe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4ha-gW-eUn"/>
+                    <constraint firstItem="d4w-N0-ghe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="71C-Ts-pEU"/>
+                    <constraint firstItem="1eT-Is-yby" firstAttribute="leading" secondItem="d4w-N0-ghe" secondAttribute="trailing" id="Fgj-Xn-Uu3"/>
+                    <constraint firstItem="1eT-Is-yby" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GHi-Wi-mtv"/>
+                    <constraint firstAttribute="bottom" secondItem="d4w-N0-ghe" secondAttribute="bottom" id="Zgq-tz-CyB"/>
+                    <constraint firstAttribute="bottom" secondItem="1eT-Is-yby" secondAttribute="bottom" id="kNc-Ib-Fww"/>
+                    <constraint firstAttribute="trailing" secondItem="1eT-Is-yby" secondAttribute="trailing" id="rm6-bY-5P3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="taskCompletionButton" destination="d4w-N0-ghe" id="LcJ-OV-iOV"/>
+                <outlet property="taskNameLabel" destination="i9i-Jn-OXT" id="mBy-se-pjY"/>
+                <outlet property="taskTimeLabel" destination="kMY-ap-tDn" id="GAS-Wg-3rc"/>
+            </connections>
+            <point key="canvasLocation" x="336.23188405797106" y="87.723214285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark" width="30" height="30"/>
+        <image name="checkmark_empty" width="30" height="30"/>
+    </resources>
+</document>

@@ -8,8 +8,11 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
-
+class TaskTableViewCell: UITableViewCell {
+    @IBOutlet weak var taskCompletionButton: UIButton!
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var taskTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

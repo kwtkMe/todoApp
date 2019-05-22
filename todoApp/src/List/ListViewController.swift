@@ -54,6 +54,53 @@ final class ListViewController: UIViewController {
 
 }
 
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    // セルを設定
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 1
+    }
+    
+    // セルの個数を設定
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let testCell: UITableViewCell = UITableViewCell()
+        return testCell
+    }
+    
+    // セクションの名前を設定
+    func tableView(tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
+        
+        return ""
+    }
+    
+    // セクションの個数を設定
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    // セルを押下したとき
+    func tableView(table: UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath) {
+        // 一覧のCell選択時イベント内容を実装
+    }
+    
+    // セルをスワイプで削除
+    // セルの編集許可
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    //スワイプしたセルを削除　※arrayNameは変数名に変更してください
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+        }
+    }
+    
+    
+}
+
 extension ListViewController: ListPresenterOutput {
     /* 以下を更新する
      - タスクビュー
