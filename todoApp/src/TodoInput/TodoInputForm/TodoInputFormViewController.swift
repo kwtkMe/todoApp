@@ -38,9 +38,8 @@ class TodoInputFormViewController: FormViewController {
                     return !((form.rowBy(tag: "taskTimeSwitch") as? SwitchRow)?.value ?? false)
                 }
                 $0.value = Calendar(identifier: .gregorian).date(byAdding: .year, value: -20, to: Date())
-        }
+            }
 
     }
 
-    
 }
