@@ -46,6 +46,7 @@ final class TodoInputPresenter: TodoInputPresenterInput {
             let user: String! = state.uid
             let data: [String: Any] = [
                 "name": taskName,
+                "date": dateSelected,
                 "time": taskTime ?? "",
                 "completion" : false
             ]
