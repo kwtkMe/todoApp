@@ -17,6 +17,8 @@ import FSCalendar
 */
 protocol CalendarPresenterInput {
     var dateSelected: String { get }
+    var numberOfTask: Int { get }
+    var dataOfTask: [TaskDataStruct] { get }
     func didSelectDate(didSelect date: Date)
     func didTapRadioButton()
     func didEditTask()
@@ -30,7 +32,8 @@ protocol CalendarPresenterOutput: AnyObject {
 }
 
 final class CalendarPresenter: CalendarPresenterInput {
-    private(set) var selectedDate: Date!
+    private(set) var selectedDate: Date = NSDate() as Date
+    private(set) var tasks: [TaskDataStruct] = [] // FireStoreのデータ
     
     private weak var view: CalendarPresenterOutput!
     private var model: CalendarModelInput
@@ -48,8 +51,23 @@ final class CalendarPresenter: CalendarPresenterInput {
     
     @objc func didFirestoreUpdatedNotification(_ notification: Notification) {
         if let state = firebase.authUI.auth?.currentUser {
-            // ユーザ情報を更新
-            view.updateViews()
+            let user: String! = state.uid
+            let collection = firebase.db.collection("users").document(user)
+                .collection("task").whereField("date", isEqualTo: dateSelected)
+            collection.getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    self.tasks.removeAll()
+                    for document in querySnapshot!.documents {
+                        self.tasks.append(TaskDataStruct(dictionary: document.data()))
+                    }
+                    DispatchQueue.main.async {
+                        // ユーザ情報を更新
+                        self.view.updateViews()
+                    }
+                }
+            }
         } else {
             // ユーザ情報を更新
             view.updateViews()
@@ -63,9 +81,19 @@ final class CalendarPresenter: CalendarPresenterInput {
     init(view: CalendarPresenterOutput, model: CalendarModelInput) {
         self.view = view
         self.model = model
+        
+        initObservers()
+        self.notification.post(name: .DidFirestoreUpdated, object: nil)
+    }
+        
+    var numberOfTask: Int {
+        return tasks.count
     }
     
-    // カレンダー上の日付を押した
+    var dataOfTask: [TaskDataStruct] {
+        return tasks
+    }
+    
     var dateSelected: String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "jp_JP") as Locale
@@ -76,6 +104,7 @@ final class CalendarPresenter: CalendarPresenterInput {
     // 保持する日付を切り替える
     func didSelectDate(didSelect date: Date) {
         selectedDate = date
+        self.notification.post(name: .DidFirestoreUpdated, object: nil)
     }
     
     // チェックボタンを押した

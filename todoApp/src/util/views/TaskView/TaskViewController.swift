@@ -41,7 +41,6 @@ class TaskViewController: UIViewController {
             let authUI = FUIAuth.defaultAuthUI()!
             let authViewController = authUI.authViewController()
             present(authViewController, animated: true, completion: nil)
-            
         }
     }
     
@@ -77,6 +76,7 @@ class TaskViewController: UIViewController {
     }
     
     private func setupViews() {
+        self.notification.post(name: .DidFirestoreUpdated, object: nil)
         if segmentedControl.selectedSegmentIndex == 0 {
             remove(asChildViewController: listViewController)
             add(asChildViewController: calendarViewController)

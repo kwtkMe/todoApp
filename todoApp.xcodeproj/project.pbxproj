@@ -28,6 +28,7 @@
 		469A69F8227FB599002A82ED /* BottomButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 469A69F7227FB599002A82ED /* BottomButtonView.xib */; };
 		469A69FC228007B9002A82ED /* TodoInputFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */; };
 		469A9A4722956515004FED05 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 469A9A4522956515004FED05 /* TaskTableViewCell.xib */; };
+		46E2059C2295DEEB00D7E87E /* TaskDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2059B2295DEEB00D7E87E /* TaskDataStruct.swift */; };
 		46E474142292904400391094 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E474132292904400391094 /* KeyManager.swift */; };
 		46E474162292A41600391094 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46E474152292A41600391094 /* GoogleService-Info.plist */; };
 		46E4741922937F8B00391094 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4741822937F8B00391094 /* NotificationNameExtension.swift */; };
@@ -68,6 +69,7 @@
 		469A69F7227FB599002A82ED /* BottomButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomButtonView.xib; sourceTree = "<group>"; };
 		469A69FB228007B9002A82ED /* TodoInputFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoInputFormViewController.swift; sourceTree = "<group>"; };
 		469A9A4522956515004FED05 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		46E2059B2295DEEB00D7E87E /* TaskDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDataStruct.swift; sourceTree = "<group>"; };
 		46E474132292904400391094 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
 		46E474152292A41600391094 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46E4741822937F8B00391094 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
@@ -177,8 +179,8 @@
 		469A69EC227FAE5C002A82ED /* TaskView */ = {
 			isa = PBXGroup;
 			children = (
-				4651F1DF22954AB50002AC2B /* TaskViewController.swift */,
 				469A69F1227FAEE8002A82ED /* TaskView.storyboard */,
+				4651F1DF22954AB50002AC2B /* TaskViewController.swift */,
 			);
 			path = TaskView;
 			sourceTree = "<group>";
@@ -190,6 +192,14 @@
 				469A69F5227FB587002A82ED /* BottomButtonView.swift */,
 			);
 			path = BottomButtonView;
+			sourceTree = "<group>";
+		};
+		46E2059A2295DEA600D7E87E /* structs */ = {
+			isa = PBXGroup;
+			children = (
+				46E2059B2295DEEB00D7E87E /* TaskDataStruct.swift */,
+			);
+			path = structs;
 			sourceTree = "<group>";
 		};
 		46E4741222928FF200391094 /* views */ = {
@@ -236,6 +246,7 @@
 			children = (
 				46E474132292904400391094 /* KeyManager.swift */,
 				46E4741D2293B5CE00391094 /* Firebase.swift */,
+				46E2059A2295DEA600D7E87E /* structs */,
 				46E4741722937F6B00391094 /* extensions */,
 				46E4741222928FF200391094 /* views */,
 			);
@@ -479,6 +490,7 @@
 				4651F1E222954B030002AC2B /* TaskTableViewCell.swift in Sources */,
 				46E740AA2291633D00E0ADD0 /* LoginModel.swift in Sources */,
 				46E4741B229384EF00391094 /* TypeExchangeExtention.swift in Sources */,
+				46E2059C2295DEEB00D7E87E /* TaskDataStruct.swift in Sources */,
 				46E740A62291631B00E0ADD0 /* LoginViewController.swift in Sources */,
 				468291032274718000807757 /* ListModel.swift in Sources */,
 				468290E42274461A00807757 /* AppDelegate.swift in Sources */,

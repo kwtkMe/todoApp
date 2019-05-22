@@ -45,9 +45,6 @@ final class CalendarViewController: UIViewController {
         let today: Date = NSDate() as Date
         calendar.select(today, scrollToDate: true)
         presenter.didSelectDate(didSelect: calendar.selectedDate!)
-        
-//        // テーブルビューのセットアップ
-//        tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
     
     @objc func tapBottomButton(_ sender: UIButton) {
@@ -78,8 +75,6 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     // カレンダーがタッチされた時の処理
     // カレンダービューの選択状況を更新((presenter.dateSelectedを反映
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        calendar.deselect(date)
-        calendar.select(date, scrollToDate: true)
         presenter.didSelectDate(didSelect: date)
     }
     
@@ -88,25 +83,42 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     // セルを設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let testCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskTableViewCell
-        return testCell
+        // 状況次第でセルのプロパティを変更して返す
+        let cell = setTableViewCellProperty(indexPath: indexPath)
+        
+        return cell
+    }
+    
+    private func setTableViewCellProperty(indexPath: IndexPath) -> UITableViewCell {
+        // ベースになるセルを取得
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskTableViewCell
+        // セルのプロパティを設定
+        print(presenter.dataOfTask[indexPath.row])
+        cell.taskNameLabel.text = presenter.dataOfTask[indexPath.row].name
+        cell.taskTimeLabel.text = presenter.dataOfTask[indexPath.row].time ?? ""
+        
+        return cell
     }
         
     // セルの個数を設定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 2
+        return presenter.numberOfTask
     }
         
     // セクションの名前を設定
-    func tableView(tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
-
-        return "yeah_REIWAMARU"
+    func tableView(_ tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
+        let dateSelected = presenter.dateSelected.components(separatedBy: "-")
+        let year = dateSelected[0]
+        let month = dateSelected[1]
+        let date = dateSelected[2]
+        let sectionTitle = "\(year)年\(month)月\(date)日"
+        
+        return sectionTitle
     }
 
     // セクションの個数を設定
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-
+        // 日付別のため1つに限られる
         return 1
     }
     
@@ -121,7 +133,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     {
         return true
     }
-    //スワイプしたセルを削除　※arrayNameは変数名に変更してください
+    //スワイプしたセルを削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
@@ -138,6 +150,7 @@ extension CalendarViewController: CalendarPresenterOutput {
     func updateViews() {
         // カレンダービュー
         // タスクビュー
+        tableView.reloadData()
     }
     
     func transitionToNextViewController(selectedDate: String) {

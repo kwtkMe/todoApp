@@ -49,8 +49,6 @@ final class ListViewController: UIViewController {
     }
     
     private func setupViews() {
-//        // テーブルビューのセットアップ
-//        tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
 
 }
@@ -58,19 +56,31 @@ final class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     // セルを設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let testCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskTableViewCell
-        return testCell
+        // 状況次第でセルのプロパティを変更して返す
+        // 状況が知りたい
+        let cell = setTableViewCellProperty(indexPath: indexPath)
+        
+        return cell
+    }
+
+    private func setTableViewCellProperty(indexPath: IndexPath) -> UITableViewCell {
+        // ベースになるセルを取得
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TaskTableViewCell
+        // セルのプロパティを設定
+        cell.taskNameLabel.text = presenter.dataOfTask[indexPath.row].name
+        cell.taskTimeLabel.text = presenter.dataOfTask[indexPath.row].time ?? "時間設定なし"
+        
+        return cell
     }
     
     // セルの個数を設定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
+        return presenter.numberOfTask
     }
     
     // セクションの名前を設定
     func tableView(tableView:UITableView, titleForHeaderInSection section:Int) -> String?{
-        
+
         return "yeah_REIWAMARU"
     }
     
@@ -107,6 +117,7 @@ extension ListViewController: ListPresenterOutput {
     */
     func updateViews() {
         // タスクビュー
+        tableView.reloadData()
     }
     
     
