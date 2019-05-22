@@ -56,16 +56,16 @@ final class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     // セルを設定
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 1
-    }
-    
-    // セルの個数を設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let testCell: UITableViewCell = UITableViewCell()
         return testCell
+    }
+    
+    // セルの個数を設定
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 1
     }
     
     // セクションの名前を設定
