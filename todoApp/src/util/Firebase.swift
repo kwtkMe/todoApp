@@ -45,9 +45,15 @@ class Firebase: NSObject {
         authUI.providers = providers
         configureFirebase()
 
+        setListener()
+    }
+    
+    private func setListener() {
+        // Firebase認証のログイン状態
         handler.addStateDidChangeListener{ (auth, user) in
             self.notification.post(name: .DidFirebaseLoginstateChanged, object: nil)
         }
+        
     }
 
 

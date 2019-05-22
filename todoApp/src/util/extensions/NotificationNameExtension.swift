@@ -9,6 +9,8 @@
 import Foundation
 
 extension Notification.Name {
-    // Firebase
+    // Firebase認証について
     static let DidFirebaseLoginstateChanged = Notification.Name("didFirebaseLoginStateChanged")
+    // Firestoreについて
+    static let DidFirestoreUpdated = Notification.Name("didFirestoreUpdated")
 }

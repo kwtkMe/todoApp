@@ -25,22 +25,6 @@ final class CalendarViewController: UIViewController {
         notification.removeObserver(self)
     }
     
-    func initObservers() {
-        notification.addObserver(self,
-                                 selector: #selector(didFirebaseLoginstateChangedNotification(_:)),
-                                 name: .DidFirebaseLoginstateChanged, object: nil)
-    }
-    
-    @objc func didFirebaseLoginstateChangedNotification(_ notification: Notification) {
-        if let state = firebase.authUI.auth?.currentUser {
-            // ユーザ情報を更新
-            setupViews()
-        } else {
-            // ユーザ情報を更新
-            setupViews()
-        }
-    }
-    
     private var presenter: CalendarPresenterInput!
     
     func inject(presenter: CalendarPresenterInput) {
@@ -99,6 +83,15 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
 }
 
 extension CalendarViewController: CalendarPresenterOutput {
+    /* 以下を更新する
+     - カレンダービュー
+     - タスクビュー
+     */
+    func updateViews() {
+        // カレンダービュー
+        // タスクビュー
+    }
+    
     func transitionToNextViewController(selectedDate: String) {
         let view = UIStoryboard(
             name: "TodoInput",

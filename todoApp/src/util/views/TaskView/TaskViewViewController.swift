@@ -37,6 +37,7 @@ class TaskViewViewController: UIViewController {
         } else {
             userButton.image = UIImage(named: "user")!.withRenderingMode(.alwaysOriginal)
             setupViews()
+            // ログイン画面の表示
             let authUI = FUIAuth.defaultAuthUI()!
             let authViewController = authUI.authViewController()
             present(authViewController, animated: true, completion: nil)

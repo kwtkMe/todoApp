@@ -11,7 +11,6 @@ import FirebaseFirestore
 
 // ここでは書き込みの責務のみ扱う
 protocol TodoInputPresenterInput {
-    // 書き込み
     func registerTask(taskName: String, taskTime: String?)
     func willTransitionToNextViewController()
 }
@@ -28,6 +27,13 @@ final class TodoInputPresenter: TodoInputPresenterInput {
     
     // Firebaseのインスタンス
     let firebase = Firebase.sharedInstance
+    
+    // NotificationCenter
+    let notification = NotificationCenter.default
+    
+    deinit {
+        notification.removeObserver(self)
+    }
     
     init(dateSelected: String, view: TodoInputPresenterOutput, model: TodoInputModelInput) {
         self.dateSelected = dateSelected
@@ -50,6 +56,7 @@ final class TodoInputPresenter: TodoInputPresenterInput {
                     print("Error adding document: \(err)")
                 } else {
                     print("Document added!")
+                    self.notification.post(name: .DidFirestoreUpdated, object: nil)
                 }
             }
         } else {

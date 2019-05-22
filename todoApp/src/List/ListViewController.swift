@@ -55,5 +55,12 @@ final class ListViewController: UIViewController {
 }
 
 extension ListViewController: ListPresenterOutput {
+    /* 以下を更新する
+     - タスクビュー
+    */
+    func updateViews() {
+        // タスクビュー
+    }
+    
     
 }
