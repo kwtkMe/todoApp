@@ -104,7 +104,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     //スワイプしたセルを削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            
+            presenter.didDeleteTask(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -117,6 +118,7 @@ extension ListViewController: ListPresenterOutput {
     */
     func updateViews() {
         // タスクビュー
+        print("RELOAD LIST")
         tableView.reloadData()
     }
     

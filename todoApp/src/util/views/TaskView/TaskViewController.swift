@@ -76,7 +76,6 @@ class TaskViewController: UIViewController {
     }
     
     private func setupViews() {
-        self.notification.post(name: .DidFirestoreUpdated, object: nil)
         if segmentedControl.selectedSegmentIndex == 0 {
             remove(asChildViewController: listViewController)
             add(asChildViewController: calendarViewController)

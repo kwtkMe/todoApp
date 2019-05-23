@@ -15,14 +15,15 @@ import FSCalendar
  - タスクの編集
  - タスクの削除
 */
+
 protocol CalendarPresenterInput {
     var dateSelected: String { get }
     var numberOfTask: Int { get }
     var dataOfTask: [TaskDataStruct] { get }
     func didSelectDate(didSelect date: Date)
-    func didTapRadioButton()
-    func didEditTask()
-    func didDeleteTask()
+    func didTapRadioButton(at row: Int)
+    func didEditTask(at row: Int)
+    func didDeleteTask(at row: Int)
     func willTransitionToNextViewController()
 }
 
@@ -31,7 +32,12 @@ protocol CalendarPresenterOutput: AnyObject {
     func transitionToNextViewController(selectedDate: String)
 }
 
-final class CalendarPresenter: CalendarPresenterInput {
+enum cellDeleteMode {
+    case plane
+    case delete
+}
+
+final class CalendarPresenter: CalendarPresenterInput {    
     private(set) var selectedDate: Date = NSDate() as Date
     private(set) var tasks: [TaskDataStruct] = [] // FireStoreのデータ
     
@@ -42,6 +48,9 @@ final class CalendarPresenter: CalendarPresenterInput {
     let firebase = Firebase.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default
+    
+    // セルの消去を感知する
+    var cellDeleteState = cellDeleteMode.plane
     
     func initObservers() {
         notification.addObserver(self,
@@ -87,7 +96,12 @@ final class CalendarPresenter: CalendarPresenterInput {
     }
         
     var numberOfTask: Int {
-        return tasks.count
+        switch self.cellDeleteState {
+        case .plane:
+            return tasks.count
+        case .delete:
+            return tasks.count - 1
+        }
     }
     
     var dataOfTask: [TaskDataStruct] {
@@ -95,6 +109,7 @@ final class CalendarPresenter: CalendarPresenterInput {
     }
     
     var dateSelected: String {
+        cellDeleteState = .plane
         let dateFormatter = DateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "jp_JP") as Locale
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -108,25 +123,39 @@ final class CalendarPresenter: CalendarPresenterInput {
     }
     
     // チェックボタンを押した
-    func didTapRadioButton() {
+    func didTapRadioButton(at row: Int) {
         // データソースにアクセス
         
         // データの更新を通知
         self.notification.post(name: .DidFirestoreUpdated, object: nil)
     }
     
+    
     // タスクを編集した
-    func didEditTask() {
-        // データソースにアクセス
+    func didEditTask(at row: Int) {
+        
         
         // データの更新を通知
         self.notification.post(name: .DidFirestoreUpdated, object: nil)
     }
     
     // タスクを削除した
-    func didDeleteTask() {
+    func didDeleteTask(at row: Int) {
+        cellDeleteState = .delete
         // データソースにアクセス
-        
+        if let state = firebase.authUI.auth?.currentUser {
+            let user: String! = state.uid
+            let id = dataOfTask[row].id
+            let collection = firebase.db.collection("users").document(user)
+                .collection("task")
+            collection.document(id).delete() { err in
+                if let err = err{
+                    print("Error removing document: \(err)")
+                }else{
+                    print("Document successfully removed!")
+                }
+            }
+        }
         // データの更新を通知
         self.notification.post(name: .DidFirestoreUpdated, object: nil)
     }

@@ -136,7 +136,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     //スワイプしたセルを削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            
+            presenter.didDeleteTask(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -150,7 +151,10 @@ extension CalendarViewController: CalendarPresenterOutput {
     func updateViews() {
         // カレンダービュー
         // タスクビュー
+        
         tableView.reloadData()
+        print("RELOAD CALENDAR")
+
     }
     
     func transitionToNextViewController(selectedDate: String) {

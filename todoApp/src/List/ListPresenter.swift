@@ -13,14 +13,20 @@ import Foundation
  - タスクの編集
  - タスクの削除
  */
+
+enum cellDeleteMode {
+    case plane
+    case delete
+}
+
 protocol ListPresenterInput {
     var numberOfTask: Int { get }
     var dataOfTask: [TaskDataStruct] { get }
     var numberOfSection: Int { get }
     var dataOfSection: [[TaskDataStruct]] { get }
-    func didTapRadioButton()
-    func didEditTask()
-    func didDeleteTask()
+    func didTapRadioButton(at row: Int)
+    func didEditTask(at row: Int)
+    func didDeleteTask(at row: Int)
 }
 
 protocol ListPresenterOutput: AnyObject {
@@ -37,6 +43,9 @@ final class ListPresenter: ListPresenterInput {
     let firebase = Firebase.sharedInstance
     // NotificationCenter
     let notification = NotificationCenter.default
+    
+    // セルの消去を感知する
+    var cellDeleteState = cellDeleteMode.plane
     
     func initObservers() {
         notification.addObserver(self,
@@ -62,10 +71,10 @@ final class ListPresenter: ListPresenterInput {
                         self.tasks.append(TaskDataStruct(dictionary: document.data()))
                     }
                 }
-                DispatchQueue.main.async {
-                    // ユーザ情報を更新
-                    self.view.updateViews()
-                }
+            }
+            DispatchQueue.main.async {
+                // ユーザ情報を更新
+                self.view.updateViews()
             }
         } else {
             // ユーザ情報を更新
@@ -102,7 +111,7 @@ final class ListPresenter: ListPresenterInput {
     }
     
     // チェックボタンを押した
-    func didTapRadioButton() {
+    func didTapRadioButton(at row: Int) {
         // データソースにアクセス
         
         // データの更新を通知
@@ -110,7 +119,7 @@ final class ListPresenter: ListPresenterInput {
     }
     
     // タスクを編集した
-    func didEditTask() {
+    func didEditTask(at row: Int) {
         // データソースにアクセス
         
         // データの更新を通知
@@ -118,9 +127,23 @@ final class ListPresenter: ListPresenterInput {
     }
     
     // タスクを削除した
-    func didDeleteTask() {
+    func didDeleteTask(at row: Int) {
         // データソースにアクセス
-        
+        cellDeleteState = .delete
+        // データソースにアクセス
+        if let state = firebase.authUI.auth?.currentUser {
+            let user: String! = state.uid
+            let id = dataOfTask[row].id
+            let collection = firebase.db.collection("users").document(user)
+                .collection("task")
+            collection.document(id).delete() { err in
+                if let err = err{
+                    print("Error removing document: \(err)")
+                }else{
+                    print("Document successfully removed!")
+                }
+            }
+        }
         // データの更新を通知
         self.notification.post(name: .DidFirestoreUpdated, object: nil)
     }

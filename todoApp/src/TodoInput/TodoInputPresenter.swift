@@ -44,13 +44,15 @@ final class TodoInputPresenter: TodoInputPresenterInput {
     func registerTask(taskName: String, taskTime: String?) {
         if let state = firebase.authUI.auth?.currentUser {
             let user: String! = state.uid
+            let ref = firebase.db.collection("users").document(user)
+                .collection("task").document()
             let data: [String: Any] = [
+                "id": ref.documentID,
                 "name": taskName,
                 "date": dateSelected,
                 "time": taskTime ?? "",
                 "completion" : false
             ]
-            
             firebase.db.collection("users").document(user)
             .collection("task").addDocument(data: data){ err in
                 if let err = err {

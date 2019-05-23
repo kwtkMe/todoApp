@@ -10,12 +10,14 @@ import Foundation
 import FirebaseFirestore
 
 struct TaskDataStruct {
+    var id: String
     var name: String
     var date: String
     var time: String?
     var completion: Bool
     
     init(dictionary: [String: Any]) {
+        self.id = dictionary["id"] as! String
         self.name = dictionary["name"] as! String
         self.date = dictionary["date"] as! String
         self.time = dictionary["time"] as? String
